@@ -4,6 +4,9 @@
   "description": "Automatically generates icon fonts (TTF) from SVGs for React Native, providing faster rendering than raw SVGs.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
+  "bin": {
+    "generate-font-icon": "./src/scripts/index.js"
+  },
   "exports": {
     ".": {
       "source": "./src/index.tsx",
@@ -32,6 +35,7 @@
     "!**/.*"
   ],
   "scripts": {
+    "generate-font-icon": "node ./src/scripts/index.js",
     "example": "yarn workspace react-native-font-icon-example",
     "test": "jest",
     "typecheck": "tsc",
@@ -71,6 +75,7 @@
     "@types/jest": "^29.5.14",
     "@types/react": "^19.1.0",
     "commitlint": "^19.8.1",
+    "commander": "^12.1.0",
     "del-cli": "^6.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
