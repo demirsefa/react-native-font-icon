@@ -111,7 +111,16 @@ async function runGenerate({ assetsFolder, outputFolder, generator }) {
 }
 
 async function main(assetsFolder, outputFolder, generator) {
-  return runGenerate({ assetsFolder, outputFolder, generator });
+  let generatorFn = generator;
+  if (!generatorFn) {
+    ({ generateFontFamily: generatorFn } = require('./generateFontFamily'));
+  }
+
+  return runGenerate({
+    assetsFolder,
+    outputFolder,
+    generator: generatorFn,
+  });
 }
 
 module.exports = {

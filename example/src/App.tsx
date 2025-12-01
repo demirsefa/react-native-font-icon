@@ -1,13 +1,14 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-font-icon';
-
-const result = multiply(3, 7);
+import { View, StyleSheet } from 'react-native';
+import fontFamily from './assets/fonts/font-family.json';
+import { IconProvider, Icon } from 'react-native-font-icon';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <IconProvider fontFamilyName="font-family" fontData={fontFamily}>
+      <View style={styles.container}>
+        <Icon name="angle-up" />
+      </View>
+    </IconProvider>
   );
 }
 
