@@ -1,5 +1,3 @@
-import FontIcon from './NativeFontIcon';
-
-export function multiply(a: number, b: number): number {
-  return FontIcon.multiply(a, b);
-}
+export * from './components/Icon';
+export * from './components/IconProvider';
+export * from './hooks/useFontIconContext';
