@@ -1,18 +1,18 @@
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, type TextProps } from 'react-native';
 import { useFontIconContext } from '../hooks/useFontIconContext';
 
-type IconProps<T extends string> = {
+interface IconProps<T extends string> extends TextProps {
   name: T;
-};
+}
 
-export function Icon<T extends string>({ name }: IconProps<T>) {
+export function Icon<T extends string>({ name, style }: IconProps<T>) {
   const { fontFamilyName, fontData } = useFontIconContext();
   const iconCode = fontData[name];
   if (!iconCode) {
     throw new Error(`Icon ${name} not found`);
   }
   return (
-    <Text style={[styles.icon, { fontFamily: fontFamilyName }]}>
+    <Text style={[styles.icon, { fontFamily: fontFamilyName }, style]}>
       {String.fromCharCode(iconCode)}
     </Text>
   );
