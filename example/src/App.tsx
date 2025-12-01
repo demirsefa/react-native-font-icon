@@ -1,21 +1,14 @@
-import { View, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { IconProvider } from 'react-native-font-icon';
+import Router from './Router';
 import fontFamily from './assets/fonts/font-family.json';
-import { IconProvider, Icon } from 'react-native-font-icon';
 
 export default function App() {
   return (
     <IconProvider fontFamilyName="font-family" fontData={fontFamily}>
-      <View style={styles.container}>
-        <Icon name="angle-up" />
-      </View>
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
     </IconProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
