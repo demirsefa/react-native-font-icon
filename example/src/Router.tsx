@@ -9,9 +9,13 @@ enableScreens();
 
 export type RootStackParamList = {
   Home: undefined;
-  Monochrome: undefined;
+  Monochrome: { iconSize: number; numColumns: number; colorful?: boolean };
   ColorIcons: undefined;
-  MonochromeOld: undefined;
+  MonochromeClassic: {
+    iconSize: number;
+    numColumns: number;
+    colorful?: boolean;
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,7 +39,7 @@ export default function Router() {
         options={{ title: 'Color Icons' }}
       />
       <Stack.Screen
-        name="MonochromeOld"
+        name="MonochromeClassic"
         component={MonochromeClassic}
         options={{ title: 'Monochrome (SVG)' }}
       />

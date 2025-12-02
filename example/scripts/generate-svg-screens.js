@@ -21,9 +21,10 @@ console.log(`Found ${svgFiles.length} SVG files`);
 function toComponentName(filename) {
   // Remove .svg extension
   const name = filename.replace('.svg', '');
-  // Convert kebab-case or snake_case to PascalCase
+  // Convert kebab-case, snake_case, or spaces to PascalCase
+  // Handle spaces by removing them and capitalizing next letter
   return name
-    .split(/[-_]/)
+    .split(/[-_\s]+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('');
 }
@@ -35,24 +36,27 @@ const cases = [];
 svgFiles.forEach((svgFile) => {
   const componentName = toComponentName(svgFile);
   const svgName = svgFile.replace('.svg', '');
-  
-  imports.push(`import ${componentName}Icon from '../assets/icons/${svgFile}';`);
-  cases.push(`    case '${svgName}':\n      return <${componentName}Icon {...props} />;`);
+
+  imports.push(
+    `import ${componentName}Icon from '../assets/icons/${svgFile}';`
+  );
+  cases.push(
+    `    case '${svgName}':\n      return <${componentName}Icon {...props} />;`
+  );
 });
 
 // Generate component content
-const componentContent = `import React from 'react';
-import type { SvgProps } from 'react-native-svg';
+const componentContent = `import type { SvgProps } from 'react-native-svg';
 
 ${imports.join('\n')}
 
-export type IconClassicName = ${svgFiles.map(f => `'${f.replace('.svg', '')}'`).join(' | ')};
+export type IconClassicName = ${svgFiles.map((f) => `'${f.replace('.svg', '')}'`).join(' | ')};
 
 export interface IconClassicProps extends SvgProps {
   name: IconClassicName;
 }
 
-export default function IconClassic({ name, ...props }: IconClassicProps) {
+export function IconClassic({ name, ...props }: IconClassicProps) {
   switch (name) {
 ${cases.join('\n')}
     default:
