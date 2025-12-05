@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo } from 'react';
 import { View, Text, FlatList, type ListRenderItem } from 'react-native';
 import { Icon, useGetAllIcons } from 'react-native-font-icon';
 import { useDebugContext } from '../contexts/DebugContext';
@@ -19,7 +19,8 @@ export default function Monochrome({ route }: Props) {
     numColumns = 12,
     colorful = false,
   } = route.params || {};
-  const allIcons = useGetAllIcons();
+  const allIcons = useGetAllIcons('font-family');
+  console.log('allIcons', allIcons);
   const { counters, updateCounter } = useDebugContext();
   const sharedStyles = useMemo(
     () => getSharedStyles(iconSize, numColumns, colorful),
@@ -52,12 +53,14 @@ export default function Monochrome({ route }: Props) {
     (c) => c.id === 'debugNavigationStarted-Monochrome'
   );
 
-  const renderItem: ListRenderItem<string> = ({ item: icon }) => (
-    <View style={sharedStyles.iconContainer}>
-      <Icon style={sharedStyles.icon} name={icon} />
-    </View>
+  const renderItem: ListRenderItem<string> = useCallback(
+    ({ item: icon }) => (
+      <View style={sharedStyles.iconContainer}>
+        <Icon style={sharedStyles.icon} name={icon} />
+      </View>
+    ),
+    [sharedStyles]
   );
-
   const debugComponent = useMemo(
     () =>
       navCounter ? (

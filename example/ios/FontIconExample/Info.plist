@@ -51,6 +51,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>color-family-android.ttf</string>
+		<string>color-family-ios.ttf</string>
 		<string>font-family.ttf</string>
 	</array>
 </dict>

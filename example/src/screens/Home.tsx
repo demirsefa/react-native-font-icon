@@ -9,13 +9,22 @@ export default function Home({ navigation }: Props) {
   const { startCounter } = useDebugContext();
 
   const handleNavigate = (
-    screenName: 'Monochrome' | 'MonochromeClassic',
+    screenName:
+      | 'Monochrome'
+      | 'MonochromeClassic'
+      | 'ColorFonts'
+      | 'ColorFontsClassic',
     iconSize: number,
     numColumns: number,
     colorful?: boolean
   ) => {
     startCounter(`debugNavigationStarted-${screenName}`);
     navigation.navigate(screenName, { iconSize, numColumns, colorful });
+  };
+
+  const handlePushHomePage = () => {
+    startCounter('debugNavigationStarted-HomePage');
+    navigation.navigate('HomePage');
   };
 
   return (
@@ -96,6 +105,23 @@ export default function Home({ navigation }: Props) {
           title="3x Colorful"
           onPress={() => handleNavigate('MonochromeClassic', 48, 4, true)}
         />
+      </View>
+      <Text style={styles.sectionTitle}>Color Fonts</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Color Font Grid (FontIcon)"
+          onPress={() => handleNavigate('ColorFonts', 24, 6, true)}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Color Font Grid (SVG)"
+          onPress={() => handleNavigate('ColorFontsClassic', 24, 6, true)}
+        />
+      </View>
+      <Text style={styles.sectionTitle}>Home Page</Text>
+      <View style={styles.buttonContainer}>
+        <Button title="Open HomePage screen" onPress={handlePushHomePage} />
       </View>
     </ScrollView>
   );

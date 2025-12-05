@@ -12,8 +12,16 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		83D5C4AE41704800B93C1CE6 /* font-family.json in Resources */ = {isa = PBXBuildFile; fileRef = 29BB5BE521F74A9F9E1648C6 /* font-family.json */; };
-		D98D153FC00D454EB628978E /* font-family.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7428215A286D43CDA824F00E /* font-family.ttf */; };
+		534B718B4D6C489AAD587883 /* color-family-android.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D82001FF71134FF684136AB0 /* color-family-android.ttf */; };
+		41FB831D87904634AF4124B7 /* color-family-ios.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7AB70E3256C4C86AE39E725 /* color-family-ios.ttf */; };
+		CBEE316A36224510839BD2C9 /* color-family-glyphmap.json in Resources */ = {isa = PBXBuildFile; fileRef = A5766DF1BD0543E8A44AFDB9 /* color-family-glyphmap.json */; };
+		0DC78E1262A244F287F5B8CD /* font-family.svg in Resources */ = {isa = PBXBuildFile; fileRef = EF17E26FCD1441CA949CE367 /* font-family.svg */; };
+		B68EE6756A924B8CBAAB7B26 /* font-family.symbol.svg in Resources */ = {isa = PBXBuildFile; fileRef = 69D19B113177406A97630C9F /* font-family.symbol.svg */; };
+		2E59BEF01D464B5E981DC936 /* font-family.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 360369C545464830B3BB462B /* font-family.ttf */; };
+		8B7C659C1F6C4C0D86FBDBD3 /* font-family.eot in Resources */ = {isa = PBXBuildFile; fileRef = C654483C48044EEFAB1C41D0 /* font-family.eot */; };
+		09D05278189640EAB82A9FAA /* font-family.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E33D4C7DA3C45BCB52219B0 /* font-family.json */; };
+		C6771938BC98417B9CF147B9 /* font-family.woff in Resources */ = {isa = PBXBuildFile; fileRef = CFD2C6304B394CE18B3D1958 /* font-family.woff */; };
+		35315264511648B08D3DF5B8 /* font-family.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 7AC33C44A5114B709665E0CA /* font-family.woff2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +29,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FontIconExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FontIconExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = FontIconExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		29BB5BE521F74A9F9E1648C6 /* font-family.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.json"; path = "../src/assets/fonts/font-family.json"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-FontIconExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FontIconExample.debug.xcconfig"; path = "Target Support Files/Pods-FontIconExample/Pods-FontIconExample.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-FontIconExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FontIconExample.release.xcconfig"; path = "Target Support Files/Pods-FontIconExample/Pods-FontIconExample.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-FontIconExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FontIconExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7428215A286D43CDA824F00E /* font-family.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.ttf"; path = "../src/assets/fonts/font-family.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FontIconExample/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FontIconExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D82001FF71134FF684136AB0 /* color-family-android.ttf */ = {isa = PBXFileReference; name = "color-family-android.ttf"; path = "../src/assets/fonts/color-family-android.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F7AB70E3256C4C86AE39E725 /* color-family-ios.ttf */ = {isa = PBXFileReference; name = "color-family-ios.ttf"; path = "../src/assets/fonts/color-family-ios.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A5766DF1BD0543E8A44AFDB9 /* color-family-glyphmap.json */ = {isa = PBXFileReference; name = "color-family-glyphmap.json"; path = "../src/assets/fonts/color-family-glyphmap.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EF17E26FCD1441CA949CE367 /* font-family.svg */ = {isa = PBXFileReference; name = "font-family.svg"; path = "../src/assets/fonts/font-family.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		69D19B113177406A97630C9F /* font-family.symbol.svg */ = {isa = PBXFileReference; name = "font-family.symbol.svg"; path = "../src/assets/fonts/font-family.symbol.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		360369C545464830B3BB462B /* font-family.ttf */ = {isa = PBXFileReference; name = "font-family.ttf"; path = "../src/assets/fonts/font-family.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C654483C48044EEFAB1C41D0 /* font-family.eot */ = {isa = PBXFileReference; name = "font-family.eot"; path = "../src/assets/fonts/font-family.eot"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8E33D4C7DA3C45BCB52219B0 /* font-family.json */ = {isa = PBXFileReference; name = "font-family.json"; path = "../src/assets/fonts/font-family.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CFD2C6304B394CE18B3D1958 /* font-family.woff */ = {isa = PBXFileReference; name = "font-family.woff"; path = "../src/assets/fonts/font-family.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7AC33C44A5114B709665E0CA /* font-family.woff2 */ = {isa = PBXFileReference; name = "font-family.woff2"; path = "../src/assets/fonts/font-family.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +83,18 @@
 		44D503210A4141F3BB7610A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7428215A286D43CDA824F00E /* font-family.ttf */,
-				29BB5BE521F74A9F9E1648C6 /* font-family.json */,
+				D82001FF71134FF684136AB0 /* color-family-android.ttf */,
+				F7AB70E3256C4C86AE39E725 /* color-family-ios.ttf */,
+				A5766DF1BD0543E8A44AFDB9 /* color-family-glyphmap.json */,
+				EF17E26FCD1441CA949CE367 /* font-family.svg */,
+				69D19B113177406A97630C9F /* font-family.symbol.svg */,
+				360369C545464830B3BB462B /* font-family.ttf */,
+				C654483C48044EEFAB1C41D0 /* font-family.eot */,
+				8E33D4C7DA3C45BCB52219B0 /* font-family.json */,
+				CFD2C6304B394CE18B3D1958 /* font-family.woff */,
+				7AC33C44A5114B709665E0CA /* font-family.woff2 */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -176,8 +199,16 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0F5E3FE594C63E0467D30D39 /* PrivacyInfo.xcprivacy in Resources */,
-				D98D153FC00D454EB628978E /* font-family.ttf in Resources */,
-				83D5C4AE41704800B93C1CE6 /* font-family.json in Resources */,
+				534B718B4D6C489AAD587883 /* color-family-android.ttf in Resources */,
+				41FB831D87904634AF4124B7 /* color-family-ios.ttf in Resources */,
+				CBEE316A36224510839BD2C9 /* color-family-glyphmap.json in Resources */,
+				0DC78E1262A244F287F5B8CD /* font-family.svg in Resources */,
+				B68EE6756A924B8CBAAB7B26 /* font-family.symbol.svg in Resources */,
+				2E59BEF01D464B5E981DC936 /* font-family.ttf in Resources */,
+				8B7C659C1F6C4C0D86FBDBD3 /* font-family.eot in Resources */,
+				09D05278189640EAB82A9FAA /* font-family.json in Resources */,
+				C6771938BC98417B9CF147B9 /* font-family.woff in Resources */,
+				35315264511648B08D3DF5B8 /* font-family.woff2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +239,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FontIconExample/Pods-FontIconExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FontIconExample/Pods-FontIconExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -247,9 +282,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FontIconExample/Pods-FontIconExample-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FontIconExample/Pods-FontIconExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

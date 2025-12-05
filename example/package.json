@@ -8,7 +8,8 @@
     "start": "react-native start",
     "build:android": "react-native build-android --extra-params \"--no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a\"",
     "build:ios": "react-native build-ios --mode Debug",
-    "generate:svg-screens": "node scripts/generate-svg-screens.js"
+    "generate:svg-screens": "node scripts/generate-svg-screens.js",
+    "install:color-fonts": "python3 -m pip install -r example/color-fonts/requirements.txt"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.81.1",

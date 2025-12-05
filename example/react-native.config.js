@@ -18,5 +18,6 @@ module.exports = {
       },
     },
   },
-  assets: ['./src/assets/fonts'],
+  // Use an absolute path to avoid monorepo resolution issues.
+  assets: [path.resolve(__dirname, './src/assets/fonts')],
 };
