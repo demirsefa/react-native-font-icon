@@ -38,4 +38,3 @@ export async function resolvePythonBinary(
     'Python is required. Please install Python 3 and ensure it is available on your PATH.'
   );
 }
-

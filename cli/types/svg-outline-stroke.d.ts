@@ -9,4 +9,3 @@ declare module 'svg-outline-stroke' {
   const outlineStroke: OutlineStrokeFn;
   export default outlineStroke;
 }
-

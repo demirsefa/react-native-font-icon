@@ -1,4 +1,5 @@
 ## Kaynak: `src/scripts/generate-colors/index.js` (salt-okuma)
+
 Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik olarak açıklar ve “abartmadan” SRP uyumlu dosyalara dağıtım önerir.
 
 ---
@@ -6,6 +7,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
 ## 1) Fonksiyonların semantik açıklaması (kısa)
 
 ### A) Dosya/Path yardımcıları
+
 - **`pathExists(targetPath)`**
   - Bir path erişilebilir mi kontrol eder (`fs.promises.access`).
   - “Var mı?” kontrolü için kullanılır (build.py, üretilen font dosyası vb.).
@@ -21,6 +23,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
   - Adayların içinde `build.py` var mı kontrol eder.
 
 ### B) SVG discovery & pre-processing
+
 - **`collectSvgFiles(folderPath)`**
   - Verilen klasörü recursive gezer.
   - `.svg` uzantılı tüm dosyaların **absolute path** listesini döndürür.
@@ -36,6 +39,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
   - Amaç: downstream tool’ların daha uyumlu parse etmesi.
 
 ### C) Staging + codepoint mapping
+
 - **`stageSvgFiles(svgFiles, stagingDir, configDir)`**
   - `stagingDir`’i sıfırlar ve yeniden oluşturur.
   - Her SVG’yi okur:
@@ -48,6 +52,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
     - `glyphMappings` (metadata json için) döner.
 
 ### D) Config üretimi (TOML)
+
 - **`buildConfigContent({ family, outputFile, colorFormat, relativeSrcs })`**
   - color-fonts build.py’nin beklediği toml içeriğini string üretir.
 
@@ -58,6 +63,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
   - Her biri için configPath + outputFile bilgisi döndürür.
 
 ### E) Build çalıştırma
+
 - **`spawnWithLogs(command, args, options)`**
   - `spawn` wrapper: stdio inherit, exit code kontrolü.
 
@@ -66,6 +72,7 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
   - `pythonBinary` absolute ise PATH’e directory’sini ekler.
 
 ### F) Output + metadata
+
 - **`copyOutputFonts(repoPath, outputFolder, configs, fontName)`**
   - `repoPath/fonts/<outputFile>` bekler.
   - Bulamazsa hata verir.
@@ -80,11 +87,13 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
     - originalSvg / stagedSvg path
 
 ### G) Cleanup
+
 - **`cleanup(configs, stagingDir)`**
   - Yazdığı toml config’leri siler.
   - staging klasörünü siler.
 
 ### H) Orchestrator
+
 - **`generateColorFonts({ assetsFolder, outputFolder, colorFontsRepoPath, pythonBinary, fontName })`**
   - input doğrular
   - svg’leri toplayıp staging’e alır
@@ -96,39 +105,48 @@ Bu doküman; mevcut tek dosyalık implementasyondaki fonksiyonları semantik ola
 ---
 
 ## 2) SRP dengeli dosyalara dağıtım (öneri)
+
 “Az dosya, net sorumluluk” hedefiyle:
 
 ### `cli/scripts/colors/svg.ts`
+
 Topla + karar ver + staging:
+
 - `collectSvgFiles`
 - `shouldSkipSvg`
 - `normalizeSvgContent`
 - `stageSvgFiles` (sanitize hook burada olacak)
 
 ### `cli/scripts/colors/config.ts`
+
 - `buildConfigContent`
 - `createConfigFiles`
 
 ### `cli/scripts/colors/build.ts`
+
 - `spawnWithLogs`
 - `runBuild`
 
 ### `cli/scripts/colors/output.ts`
+
 - `copyOutputFonts`
 - `writeGlyphMetadata`
 - `cleanup`
 
 ### `cli/scripts/colors/index.ts`
+
 - `generateColorFonts` orchestrator
 - `runColors` (CLI param parsing/resolve + generateColorFonts çağrısı)
 
 ### `cli/scripts/colors/sanitize/default-adapter.ts`
+
 - sanitize giriş/çıkış kontratı (string in → string out)
 - `python-utils/sanitize.py` çağırma (auto-install yok)
 
 ---
 
 ## 3) Sanitize entegrasyonu için önerilen hook noktası
+
 `stageSvgFiles` döngüsünde (her SVG için):
 
 1. `content = readFile(svgPath)`
@@ -138,4 +156,3 @@ Topla + karar ver + staging:
 5. staging’e yaz
 
 Detaylar için: `dev/colors-task1-sanitize.md`
-

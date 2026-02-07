@@ -10,6 +10,10 @@ export type ColorsParams = {
    */
   python?: string;
   fontName?: string;
+  /**
+   * Limit number of icons processed (useful for quick tests).
+   */
+  max?: number;
   sanitize?: boolean;
   /**
    * When true, writes outputs into platform subfolders:

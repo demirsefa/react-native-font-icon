@@ -6,4 +6,3 @@ Bu klasör; SVG discovery + pre-processing + staging adımlarını içerir.
 - `shouldSkipSvg`: unsupported pattern erken eleme
 - `normalizeSvgContent`: xlink/href normalize
 - `stageSvgFiles`: codepoint mapping + staging write (sanitize hook burada)
-

@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 
 import type { GeneratedConfig } from '../types.ts';
@@ -14,15 +15,30 @@ export async function runNanoemoji(
   configDir: string,
   configs: GeneratedConfig[]
 ): Promise<void> {
-  const configArgs = configs.map((config) =>
-    path.relative(configDir, config.configPath).replace(/\\/g, '/')
-  );
+  // Running multiple configs in a single nanoemoji invocation can lead to
+  // collisions in intermediate build artifacts when configs share the same
+  // `family` (common when `--platform-subfolders` is enabled).
+  //
+  // Example failure:
+  //   ninja: error: build.ninja:... multiple rules generate <family>.fea
+  //
+  // To keep the font family stable across platforms while avoiding collisions,
+  // run nanoemoji once per config and start from a clean build folder each time.
+  for (const config of configs) {
+    await fs.promises.rm(path.join(configDir, 'build'), {
+      recursive: true,
+      force: true,
+    });
 
-  await spawnPythonModule({
-    pythonBinary,
-    module: 'nanoemoji.nanoemoji',
-    args: configArgs,
-    cwd: configDir,
-  });
+    const configArg = path
+      .relative(configDir, config.configPath)
+      .replace(/\\/g, '/');
+
+    await spawnPythonModule({
+      pythonBinary,
+      module: 'nanoemoji.nanoemoji',
+      args: [configArg],
+      cwd: configDir,
+    });
+  }
 }
-

@@ -5,4 +5,3 @@ export function resolveFromImportMeta(metaUrl: string, ...segments: string[]) {
   const here = path.dirname(fileURLToPath(metaUrl));
   return path.resolve(here, ...segments);
 }
-

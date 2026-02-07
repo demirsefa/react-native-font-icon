@@ -6,4 +6,3 @@ export async function writeJsonFile(
 ): Promise<void> {
   await fs.promises.writeFile(filePath, JSON.stringify(value, null, 2), 'utf8');
 }
-

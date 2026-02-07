@@ -72,8 +72,10 @@ export async function stageMonochromeSvgs(params: {
   sanitize: boolean;
   engine: SanitizeEngine;
   inkscapeBinary?: string;
+  max?: number;
 }) {
-  const { assetsFolder, stagingDir, sanitize, engine, inkscapeBinary } = params;
+  const { assetsFolder, stagingDir, sanitize, engine, inkscapeBinary, max } =
+    params;
 
   await fs.promises.rm(stagingDir, { recursive: true, force: true });
   await fs.promises.mkdir(stagingDir, { recursive: true });
@@ -82,10 +84,23 @@ export async function stageMonochromeSvgs(params: {
     withFileTypes: true,
   });
 
-  const svgFiles = entries
+  const svgFilesAll = entries
     .filter((e) => e.isFile() && e.name.toLowerCase().endsWith('.svg'))
     .map((e) => e.name)
     .sort((a, b) => a.localeCompare(b));
+
+  if (svgFilesAll.length === 0) {
+    throw new CliUserError(`No SVG files found under: ${assetsFolder}`);
+  }
+
+  const svgFiles =
+    typeof max === 'number' ? svgFilesAll.slice(0, max) : svgFilesAll;
+
+  if (svgFiles.length === 0) {
+    throw new CliUserError(
+      `No SVG files selected (max=${String(max)}) under: ${assetsFolder}`
+    );
+  }
 
   if (!sanitize) {
     // Simple copy.
@@ -104,13 +119,13 @@ export async function stageMonochromeSvgs(params: {
     [
       '⚠️ EXPERIMENTAL: monochrome sanitize is enabled.',
       `Engine: ${engine}`,
+      typeof max === 'number' ? `Max: ${max}` : '',
     ].join(' ')
   );
 
   if (engine === 'inkscape') {
     const inkscape = await resolveInkscapeBinary(inkscapeBinary);
-    for (let i = 0; i < svgFiles.length; i++) {
-      const file = svgFiles[i];
+    for (const [i, file] of svgFiles.entries()) {
       // Inkscape can be slow per file; emit progress so it doesn't look "stuck".
       console.warn(`[inkscape sanitize] (${i + 1}/${svgFiles.length}) ${file}`);
       const inputSvg = path.join(assetsFolder, file);

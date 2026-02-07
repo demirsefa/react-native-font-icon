@@ -9,6 +9,7 @@ type ColorsOptions = {
   dest?: string;
   python?: string;
   fontName?: string;
+  max?: number;
   sanitize?: boolean;
   platformSubfolders?: boolean;
 };
@@ -17,6 +18,7 @@ type MonochromeOptions = {
   src?: string;
   dest?: string;
   fontName?: string;
+  max?: number;
   sanitize?: boolean;
   sanitizeEngine?: 'inkscape' | 'paper';
   inkscape?: string;
@@ -46,6 +48,17 @@ async function main(argv: string[]) {
       '--font-name <name>',
       'Custom font family name used during compilation',
       'color-family'
+    )
+    .option(
+      '--max <count>',
+      'Limit number of icons processed (useful for quick tests)',
+      (value) => {
+        const parsed = Number.parseInt(value, 10);
+        if (!Number.isFinite(parsed) || parsed <= 0) {
+          throw new CliUserError(`Invalid --max value: ${value}`);
+        }
+        return parsed;
+      }
     )
     .option('--sanitize', 'Sanitize SVGs before compilation', false)
     .option(
@@ -82,7 +95,22 @@ async function main(argv: string[]) {
       '--font-name <name>',
       'Optional font family/file name (defaults to assets folder name)'
     )
-    .option('--sanitize', 'EXPERIMENTAL: Sanitize SVGs before compilation', false)
+    .option(
+      '--max <count>',
+      'Limit number of icons processed (useful for quick tests)',
+      (value) => {
+        const parsed = Number.parseInt(value, 10);
+        if (!Number.isFinite(parsed) || parsed <= 0) {
+          throw new CliUserError(`Invalid --max value: ${value}`);
+        }
+        return parsed;
+      }
+    )
+    .option(
+      '--sanitize',
+      'EXPERIMENTAL: Sanitize SVGs before compilation',
+      false
+    )
     .option(
       '--sanitize-engine <engine>',
       'EXPERIMENTAL: Sanitize engine: "inkscape" (best fidelity) or "paper" (best-effort JS)',

@@ -5,4 +5,3 @@ export function getStoragePath(): string {
   // cli/scripts/monochrome/storage -> cli/scripts/monochrome
   return resolveFromImportMeta(import.meta.url, '..', STORAGE_FILE);
 }
-

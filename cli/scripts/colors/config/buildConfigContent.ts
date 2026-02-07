@@ -26,4 +26,3 @@ srcs = [${srcList}]
 wght = 400
 `;
 }
-

@@ -12,4 +12,3 @@ export async function sha256FileUtf8IfExists(
   }
   return await sha256FileUtf8(filePath);
 }
-

@@ -25,6 +25,7 @@ export async function runColors(params: ColorsParams) {
     outputFolder,
     pythonBinary: params.python,
     fontName: params.fontName,
+    max: params.max,
     sanitize: params.sanitize,
     platformSubfolders: params.platformSubfolders,
   });

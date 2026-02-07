@@ -21,6 +21,7 @@ export async function runMonochrome(params: MonochromeParams) {
     : path.resolve(process.cwd(), params.dest);
 
   const fontName = createFontName(params.fontName, assetsFolder);
+  const maxIcons = params.max;
 
   const sanitize = Boolean(params.sanitize);
   const engine = params.sanitizeEngine ?? 'inkscape';
@@ -47,11 +48,14 @@ export async function runMonochrome(params: MonochromeParams) {
         sanitize: true,
         engine,
         inkscapeBinary: params.inkscape,
+        max: maxIcons,
       });
       compilationSrc = stagingDir;
     }
 
-    await generateFontFamily(compilationSrc, outputFolder, fontName);
+    await generateFontFamily(compilationSrc, outputFolder, fontName, {
+      max: maxIcons,
+    });
   } finally {
     if (workDir) {
       await fs.promises.rm(workDir, { recursive: true, force: true });

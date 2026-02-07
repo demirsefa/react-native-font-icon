@@ -15,4 +15,3 @@
   },
   "include": ["**/*.ts", "**/*.d.ts", "../python-utils/**/*.ts"]
 }
-

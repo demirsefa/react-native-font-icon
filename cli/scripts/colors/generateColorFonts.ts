@@ -86,6 +86,7 @@ export async function generateColorFonts(params: {
   outputFolder: string;
   pythonBinary?: string;
   fontName?: string;
+  max?: number;
   sanitize?: boolean;
   platformSubfolders?: boolean;
 }) {
@@ -94,6 +95,7 @@ export async function generateColorFonts(params: {
     outputFolder,
     pythonBinary,
     fontName = DEFAULT_FONT_NAME,
+    max,
     sanitize,
     platformSubfolders,
   } = params;
@@ -102,10 +104,12 @@ export async function generateColorFonts(params: {
     throw new Error(`Assets folder does not exist: ${assetsFolder}`);
   }
 
-  const svgFiles = await collectSvgFiles(assetsFolder);
-  if (svgFiles.length === 0) {
+  const svgFilesAll = await collectSvgFiles(assetsFolder);
+  if (svgFilesAll.length === 0) {
     throw new Error(`No SVG files found under ${assetsFolder}`);
   }
+  const svgFiles =
+    typeof max === 'number' ? svgFilesAll.slice(0, max) : svgFilesAll;
 
   const python = await resolvePythonBinary(pythonBinary);
   await assertResvgAvailable(python);

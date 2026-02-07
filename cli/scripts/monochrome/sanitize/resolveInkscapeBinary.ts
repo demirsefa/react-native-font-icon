@@ -53,7 +53,7 @@ export async function resolveInkscapeBinary(
     candidates.push('/Applications/Inkscape.app/Contents/MacOS/inkscape');
   } else if (process.platform === 'win32') {
     const programFiles = [
-      process.env['ProgramFiles'],
+      process.env.ProgramFiles,
       process.env['ProgramFiles(x86)'],
       // Fallback defaults
       'C:\\\\Program Files',

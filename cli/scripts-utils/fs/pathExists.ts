@@ -8,4 +8,3 @@ export async function pathExists(targetPath: string): Promise<boolean> {
     return false;
   }
 }
-

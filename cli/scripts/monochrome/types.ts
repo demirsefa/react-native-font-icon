@@ -3,6 +3,10 @@ export type MonochromeParams = {
   dest: string;
   fontName?: string;
   /**
+   * Limit number of icons processed (useful for quick tests).
+   */
+  max?: number;
+  /**
    * EXPERIMENTAL: pre-process SVGs before compilation.
    */
   sanitize?: boolean;

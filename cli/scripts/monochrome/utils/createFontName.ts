@@ -9,4 +9,3 @@ export function createFontName(
   const derived = path.basename(path.resolve(assetsFolder));
   return normalizeFontName(fontName, derived || DEFAULT_FONT_NAME);
 }
-

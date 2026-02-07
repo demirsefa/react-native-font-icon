@@ -22,4 +22,3 @@ export function normalizeSvgContent(svgContent: string): string {
 
   return result;
 }
-

@@ -20,4 +20,3 @@ export async function collectSvgFiles(folderPath: string): Promise<string[]> {
 
   return walk(folderPath, []);
 }
-

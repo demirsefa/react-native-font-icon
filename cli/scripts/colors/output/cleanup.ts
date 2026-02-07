@@ -11,4 +11,3 @@ export async function cleanup(
   );
   await fs.promises.rm(stagingDir, { recursive: true, force: true });
 }
-
