@@ -5,11 +5,11 @@
   "outputs": [
     {
       "platform": "android",
-      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/android/custom-font-colors.ttf"
+      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/common/android/custom-font-colors.ttf"
     },
     {
       "platform": "ios",
-      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/ios/custom-font-colors.ttf"
+      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/common/ios/custom-font-colors.ttf"
     }
   ]
 }

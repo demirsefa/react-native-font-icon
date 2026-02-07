@@ -5,22 +5,40 @@ import React from 'react';
 interface IconProps<T extends string> extends TextProps {
   name: T;
   family?: string;
+  fallbackProps?: Record<string, unknown>;
 }
 
-function Icon<T extends string>({ name, family, style }: IconProps<T>) {
+function Icon<T extends string>({
+  name,
+  family,
+  style,
+  fallbackProps,
+}: IconProps<T>) {
   const { fontData } = useFontIconContext();
-  const fallbackFamily = (Object.keys(fontData)[0] as string | undefined) ?? '';
+  const fontEntries = Array.isArray(fontData)
+    ? fontData
+    : Object.values(fontData);
+  const fallbackFamily = fontEntries[0]?.family ?? '';
   const resolvedFamily = family ?? fallbackFamily;
 
   if (!resolvedFamily) {
     return <Text style={style}>X</Text>;
   }
-  const glyphMap = fontData[resolvedFamily as keyof typeof fontData];
+  const fontEntry = fontEntries.find(
+    (entry) => entry.family === resolvedFamily
+  );
 
-  if (!glyphMap) {
+  if (!fontEntry) {
     return <Text style={style}>X</Text>;
   }
 
+  const fallback = fontEntry.fallback;
+  if (fallback?.names?.includes(name)) {
+    const FallbackComponent = fallback.component;
+    return <FallbackComponent {...fallbackProps} style={style} />;
+  }
+
+  const glyphMap = fontEntry.glyphMap;
   const iconCode = glyphMap[name];
 
   if (!iconCode) {
@@ -28,9 +46,7 @@ function Icon<T extends string>({ name, family, style }: IconProps<T>) {
   }
 
   return (
-    <Text
-      style={[styles.icon, { fontFamily: resolvedFamily as string }, style]}
-    >
+    <Text style={[styles.icon, { fontFamily: resolvedFamily }, style]}>
       {String.fromCharCode(iconCode)}
     </Text>
   );

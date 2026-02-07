@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { CliUserError } from './errors/CliUserError.ts';
 import { runColors } from './scripts/colors/index.ts';
 import { runMonochrome } from './scripts/monochrome/index.ts';
+import { runFallback } from './scripts/fallback/index.ts';
 
 type ColorsOptions = {
   src?: string;
@@ -22,6 +23,12 @@ type MonochromeOptions = {
   sanitize?: boolean;
   sanitizeEngine?: 'inkscape' | 'paper';
   inkscape?: string;
+};
+
+type FallbackOptions = {
+  src?: string;
+  destJson?: string;
+  destComponent?: string;
 };
 
 async function main(argv: string[]) {
@@ -138,6 +145,46 @@ async function main(argv: string[]) {
           ...options,
           src: resolvedSrc,
           dest: resolvedDest,
+        });
+      }
+    );
+
+  program
+    .command('generate:fallback')
+    .description('Generate fallback icon list + component from SVGs.')
+    .argument('[src]', 'Folder containing SVG icons')
+    .argument('[destJson]', 'Destination JSON file for fallback icon names')
+    .argument(
+      '[destComponent]',
+      'Destination TSX file for FallBackIcon component'
+    )
+    .option('-s, --src <path>', 'Folder containing SVG icons')
+    .option(
+      '--dest-json <path>',
+      'Destination JSON file for fallback icon names'
+    )
+    .option(
+      '--dest-component <path>',
+      'Destination TSX file for FallBackIcon component'
+    )
+    .action(
+      async (
+        src: string | undefined,
+        destJson: string | undefined,
+        destComponent: string | undefined,
+        options: FallbackOptions
+      ) => {
+        const resolvedJson = options.destJson ?? destJson;
+        const resolvedComponent = options.destComponent ?? destComponent;
+        if (!resolvedJson || !resolvedComponent) {
+          throw new Error(
+            'Both destJson and destComponent are required. Provide positional arguments or --dest-json/--dest-component.'
+          );
+        }
+        await runFallback({
+          src: options.src ?? src,
+          destJson: resolvedJson,
+          destComponent: resolvedComponent,
         });
       }
     );

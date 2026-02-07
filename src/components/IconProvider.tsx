@@ -1,7 +1,20 @@
-import { createContext, type ReactNode } from 'react';
+import { createContext, type ReactNode, type FC } from 'react';
 
 type FontGlyphMap = Record<string, number>;
-export type FontGlyphCollection = Record<string, FontGlyphMap>;
+export type FontDataEntry = {
+  family: string;
+  glyphMap: FontGlyphMap;
+  /**
+   * Optional fallback render for icons that should use SVG instead of fonts.
+   */
+  fallback?: {
+    names: string[];
+    component: FC<any>;
+  };
+};
+export type FontGlyphCollection =
+  | ReadonlyArray<FontDataEntry>
+  | Record<string, FontDataEntry>;
 
 export type FontIconContextType = {
   fontData: FontGlyphCollection;
@@ -13,8 +26,7 @@ export const FontIconContext = createContext<FontIconContextType | undefined>(
 
 export interface IconProviderProps {
   /**
-   * Map of font family name -> glyph map.
-   * For a single font, just pass an object with one key.
+   * List or map of font families with glyph maps.
    */
   fontData: FontGlyphCollection;
   children: ReactNode;

@@ -3,16 +3,19 @@
 Automatically generates icon fonts (TTF) from SVGs for React Native, providing faster rendering than raw SVGs.
 
 > [!WARNING]
+>
 > ## Icon türleri / destek durumu (ÖNEMLİ)
 >
 > Bu proje **her SVG ikon türünü** desteklemeyi hedeflemez. Üç ayrı senaryo vardır:
 >
 > ### 1) Monochrome “filled/solid” SVG → Font family (TTF) ✅ DESTEKLENİR
+>
 > - **Ana/önerilen kullanım budur.**
 > - En iyi sonuç için ikonlar **stroke’suz**, tek renk (filled/solid) olmalıdır.
 > - CLI: `generate:monochrome` (alias: `generate:font`)
 >
 > ### 2) Stroke/outline SVG → Monochrome font (normalize/sanitize) ⚠️ DENEYSEL (Inkscape / Paper)
+>
 > - Stroke’lu ikonların font’a çevrilebilmesi için SVG’ler **stroke-to-path** olacak şekilde normalize edilir.
 > - Bu akış **deneyseldir**; çıktı kalitesi ikonlara/SVG yapısına göre değişebilir.
 > - CLI: `generate:monochrome --sanitize [--sanitize-engine inkscape|paper]`
@@ -20,11 +23,13 @@ Automatically generates icon fonts (TTF) from SVGs for React Native, providing f
 >   - `paper`: best-effort JS dönüşüm (daha kayıplı olabilir)
 >
 > ### 3) Colorful SVG → Color font family ⚠️ DENEYSEL (nanoemoji)
+>
 > - Renkli (multi-color) SVG’lerden color-font üretimi **deneyseldir**.
 > - Bu akış `nanoemoji` ile çalışır ve platforma göre farklı hedefler üretir (örn. Android COLR, iOS SBIX).
 > - CLI: `generate:colors`
 >
 > ### Not
+>
 > - “SVG’yi runtime’da olduğu gibi kullanmak” (standalone/inline SVG) bu projenin hedefi değildir; bu araç **SVG → font** üretimine odaklanır.
 
 ## Installation

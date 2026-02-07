@@ -36,7 +36,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts --sanitize --platform-subfolders --font-name custom-font-colors --max 1",
+    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --sanitize --platform-subfolders --font-name custom-font-colors --max 1",
     "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1",
     "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1",
     "generate:monochrome:example:sanitize:paper": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-paper --sanitize --sanitize-engine paper --max 1",
