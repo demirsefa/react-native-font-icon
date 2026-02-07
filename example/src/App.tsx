@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { IconProvider } from 'react-native-font-icon';
 import Router from './Router';
-import fontFamily from './assets/fonts/font-family.json';
-import colorFamily from './assets/fonts/color-family-glyphmap.json';
+import monochromeFamily from './assets/fonts/custom-font-monochrome-inkscape.json';
+import colorFamily from './assets/fonts/custom-font-colors-glyphmap.json';
 import { DebugProvider } from './contexts/DebugContext';
 
 type ColorGlyph = {
@@ -17,16 +17,15 @@ const colorGlyphMap = (colorFamily as ColorGlyph[]).reduce<
   return acc;
 }, {});
 
+const fontData = {
+  'custom-font-monochrome-inkscape': monochromeFamily,
+  'custom-font-colors': colorGlyphMap,
+} as const;
+
 export default function App() {
   return (
     <DebugProvider>
-      <IconProvider
-        fontFamilyName={['font-family', 'color-family-ios']}
-        fontData={{
-          'font-family': fontFamily,
-          'color-family-ios': colorGlyphMap,
-        }}
-      >
+      <IconProvider fontData={fontData}>
         <NavigationContainer>
           <Router />
         </NavigationContainer>

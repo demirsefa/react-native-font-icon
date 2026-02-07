@@ -1,4 +1,4 @@
-import { Text, type TextProps } from 'react-native';
+import { Text, type TextProps, StyleSheet } from 'react-native';
 import { useFontIconContext } from '../hooks/useFontIconContext';
 import React from 'react';
 
@@ -8,8 +8,8 @@ interface IconProps<T extends string> extends TextProps {
 }
 
 function Icon<T extends string>({ name, family, style }: IconProps<T>) {
-  const { fontFamilyName, fontData } = useFontIconContext();
-  const fallbackFamily = fontFamilyName?.[0] ?? fontFamilyName;
+  const { fontData } = useFontIconContext();
+  const fallbackFamily = (Object.keys(fontData)[0] as string | undefined) ?? '';
   const resolvedFamily = family ?? fallbackFamily;
 
   if (!resolvedFamily) {
@@ -29,15 +29,18 @@ function Icon<T extends string>({ name, family, style }: IconProps<T>) {
 
   return (
     <Text
-      style={{
-        fontFamily: resolvedFamily as string,
-        fontWeight: '100',
-        fontSize: 32,
-      }}
+      style={[styles.icon, { fontFamily: resolvedFamily as string }, style]}
     >
       {String.fromCharCode(iconCode)}
     </Text>
   );
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    fontWeight: '100',
+    fontSize: 32,
+  },
+});
 
 export default React.memo(Icon);

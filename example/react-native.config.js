@@ -19,5 +19,7 @@ module.exports = {
     },
   },
   // Use an absolute path to avoid monorepo resolution issues.
-  assets: [path.resolve(__dirname, './src/assets/fonts')],
+  assets: [path.resolve(__dirname, './src/assets/fonts/common')],
+  iosAssets: [path.resolve(__dirname, './src/assets/fonts/ios')],
+  androidAssets: [path.resolve(__dirname, './src/assets/fonts/android')],
 };

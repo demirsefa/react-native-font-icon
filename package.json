@@ -5,7 +5,7 @@
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "bin": {
-    "generate-font-icon": "./src/scripts/index.js"
+    "generate": "./cli/index.ts"
   },
   "exports": {
     ".": {
@@ -17,6 +17,7 @@
   },
   "files": [
     "src",
+    "cli",
     "lib",
     "android",
     "ios",
@@ -35,14 +36,20 @@
     "!**/.*"
   ],
   "scripts": {
-    "generate": "node ./src/scripts/index.js",
+    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts --sanitize --platform-subfolders --font-name custom-font-colors",
+    "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome",
+    "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape",
+    "generate:monochrome:example:sanitize:paper": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-paper --sanitize --sanitize-engine paper",
     "example": "yarn workspace react-native-font-icon-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "validate": "yarn lint && prettier --check . --ignore-path .gitignore",
+    "validate:write": "yarn lint --fix && prettier --write . --ignore-path .gitignore",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it --only-version"
+    "release": "release-it --only-version",
+    "example:fonts": "cd example && npx react-native-asset"
   },
   "keywords": [
     "react-native",
@@ -74,7 +81,6 @@
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/jest": "^29.5.14",
     "@types/react": "^19.1.0",
-    "outline-stroke": "^4.0.0",
     "commander": "^12.1.0",
     "commitlint": "^19.8.1",
     "del-cli": "^6.0.0",
@@ -88,6 +94,7 @@
     "react-native": "0.81.1",
     "react-native-builder-bob": "^0.40.13",
     "release-it": "^19.0.4",
+    "svg-outline-stroke": "^1.3.1",
     "svgtofont": "^6.4.0",
     "turbo": "^2.5.6",
     "typescript": "5.5.4"

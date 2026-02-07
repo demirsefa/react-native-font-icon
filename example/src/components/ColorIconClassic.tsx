@@ -85,92 +85,94 @@ import WinterTownFilledVectorsSkiSnowTramWinterCableIcon from '../assets/color-i
 import WinterTownFilledVectorsSnowChristmasDecorationHolidayWindowIcon from '../assets/color-icons/winter-town-filled-vectors-snow-christmas-decoration-holiday-window.svg';
 import WinterTownFilledVectorsTreeWoodWinterStumpIcon from '../assets/color-icons/winter-town-filled-vectors-tree-wood-winter-stump.svg';
 
-export type ColorIconClassicName =
-  | 'baby'
-  | 'bib'
-  | 'book'
-  | 'crib'
-  | 'cubes'
-  | 'feeder'
-  | 'feeding'
-  | 'game'
-  | 'halloween-scary-vectors-axe-bloody-halloween'
-  | 'halloween-scary-vectors-bat-danger-halloween'
-  | 'halloween-scary-vectors-bloody-butcher-knife-knife'
-  | 'halloween-scary-vectors-bloody-eyeball-halloween'
-  | 'halloween-scary-vectors-bones-halloween-human-bone'
-  | 'halloween-scary-vectors-broomstick-fly-magic'
-  | 'halloween-scary-vectors-burning-candles-candles-halloween'
-  | 'halloween-scary-vectors-castle-ghost-house-horror'
-  | 'halloween-scary-vectors-cauldron-halloween-pot'
-  | 'halloween-scary-vectors-cemetery-gravestone-graveyard'
-  | 'halloween-scary-vectors-death-grim-reaper'
-  | 'halloween-scary-vectors-devil-dracula-vampire'
-  | 'halloween-scary-vectors-evil-halloween-hand'
-  | 'halloween-scary-vectors-ghost-halloween-horror-2'
-  | 'halloween-scary-vectors-ghost-halloween-horror'
-  | 'halloween-scary-vectors-halloween-hat-magic'
-  | 'halloween-scary-vectors-halloween-owl-spooky'
-  | 'halloween-scary-vectors-halloween-pirates-skeleton'
-  | 'halloween-scary-vectors-halloween-scary-spider'
-  | 'halloween-scary-vectors-pumpkin-halloween'
-  | 'hat'
-  | 'pacifier'
-  | 'rattle'
-  | 'safety-pin'
-  | 'toy'
-  | 'tricycle'
-  | 'winter-town-filled-vectors-agriculture-countryside-farm-farming-farmland'
-  | 'winter-town-filled-vectors-amenities-city-council-meter-parking'
-  | 'winter-town-filled-vectors-architecture-ben-big-clock-landmark'
-  | 'winter-town-filled-vectors-area-bench-nature-park-rest'
-  | 'winter-town-filled-vectors-art-city-exhibition-exposition-gallery'
-  | 'winter-town-filled-vectors-bench-bus-station-stop-transportation'
-  | 'winter-town-filled-vectors-bird-house-birdhouse-winter-snow'
-  | 'winter-town-filled-vectors-box-email-letter-letterbox-mail'
-  | 'winter-town-filled-vectors-building-business-hotel-motel-small'
-  | 'winter-town-filled-vectors-building-christmas-church-snow-winter'
-  | 'winter-town-filled-vectors-building-clinic-healthcare-hospital-winter'
-  | 'winter-town-filled-vectors-building-company-office-real-estate'
-  | 'winter-town-filled-vectors-building-education-school-winter-snow'
-  | 'winter-town-filled-vectors-building-home-house-townhouse-townhouses'
-  | 'winter-town-filled-vectors-bus-campervan-minivan-snow-winter'
-  | 'winter-town-filled-vectors-bus-public-transport-school'
-  | 'winter-town-filled-vectors-cabin-destination-house-winter-wood'
-  | 'winter-town-filled-vectors-cable-car-holiday-vacation-winter'
-  | 'winter-town-filled-vectors-camping-snow-tent-winter'
-  | 'winter-town-filled-vectors-canal-dam-drain-irrigation-water'
-  | 'winter-town-filled-vectors-car-garage-park-parking-winter'
-  | 'winter-town-filled-vectors-car-ice-snow-snowflake-winter'
-  | 'winter-town-filled-vectors-car-public-transport-taxi'
-  | 'winter-town-filled-vectors-carnival-carousel-circus-winter-snow'
-  | 'winter-town-filled-vectors-christmas-holiday-light-street-winter'
-  | 'winter-town-filled-vectors-christmas-tree-holidays-trees-winter'
-  | 'winter-town-filled-vectors-cold-cool-icicles-weather-winter (1)'
-  | 'winter-town-filled-vectors-cold-cool-icicles-weather-winter'
-  | 'winter-town-filled-vectors-cold-season-snow-train-winter'
-  | 'winter-town-filled-vectors-do-enter-entry-no-not'
-  | 'winter-town-filled-vectors-egypt-landmarks-monument-obelisk-world'
-  | 'winter-town-filled-vectors-fence-fences-garden-protection-security'
-  | 'winter-town-filled-vectors-fire-firefighter-hydrant-protection-security'
-  | 'winter-town-filled-vectors-firewood-log-winter-wood-snow'
-  | 'winter-town-filled-vectors-forecast-meteorology-weather-sock-wind'
-  | 'winter-town-filled-vectors-fountain-frozen-park-garden-winter'
-  | 'winter-town-filled-vectors-frosty-new-year-snowman-winter'
-  | 'winter-town-filled-vectors-funeral-gravestone-graveyard-winter-rip'
-  | 'winter-town-filled-vectors-hotel-bedroom-apartement-indoor-travel'
-  | 'winter-town-filled-vectors-house-winter-wooden-snow'
-  | 'winter-town-filled-vectors-lamp-light-navigation-regulation-winter'
-  | 'winter-town-filled-vectors-market-store-shop-winter'
-  | 'winter-town-filled-vectors-shovel-weather-snow-winter'
-  | 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow-2'
-  | 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow-3'
-  | 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow'
-  | 'winter-town-filled-vectors-signpost-road-sign-street-guidepost-2'
-  | 'winter-town-filled-vectors-signpost-road-sign-street-guidepost'
-  | 'winter-town-filled-vectors-ski-snow-tram-winter-cable'
-  | 'winter-town-filled-vectors-snow-christmas-decoration-holiday-window'
-  | 'winter-town-filled-vectors-tree-wood-winter-stump';
+export const ColorIconClassicNames = [
+  "baby",
+  "bib",
+  "book",
+  "crib",
+  "cubes",
+  "feeder",
+  "feeding",
+  "game",
+  "halloween-scary-vectors-axe-bloody-halloween",
+  "halloween-scary-vectors-bat-danger-halloween",
+  "halloween-scary-vectors-bloody-butcher-knife-knife",
+  "halloween-scary-vectors-bloody-eyeball-halloween",
+  "halloween-scary-vectors-bones-halloween-human-bone",
+  "halloween-scary-vectors-broomstick-fly-magic",
+  "halloween-scary-vectors-burning-candles-candles-halloween",
+  "halloween-scary-vectors-castle-ghost-house-horror",
+  "halloween-scary-vectors-cauldron-halloween-pot",
+  "halloween-scary-vectors-cemetery-gravestone-graveyard",
+  "halloween-scary-vectors-death-grim-reaper",
+  "halloween-scary-vectors-devil-dracula-vampire",
+  "halloween-scary-vectors-evil-halloween-hand",
+  "halloween-scary-vectors-ghost-halloween-horror-2",
+  "halloween-scary-vectors-ghost-halloween-horror",
+  "halloween-scary-vectors-halloween-hat-magic",
+  "halloween-scary-vectors-halloween-owl-spooky",
+  "halloween-scary-vectors-halloween-pirates-skeleton",
+  "halloween-scary-vectors-halloween-scary-spider",
+  "halloween-scary-vectors-pumpkin-halloween",
+  "hat",
+  "pacifier",
+  "rattle",
+  "safety-pin",
+  "toy",
+  "tricycle",
+  "winter-town-filled-vectors-agriculture-countryside-farm-farming-farmland",
+  "winter-town-filled-vectors-amenities-city-council-meter-parking",
+  "winter-town-filled-vectors-architecture-ben-big-clock-landmark",
+  "winter-town-filled-vectors-area-bench-nature-park-rest",
+  "winter-town-filled-vectors-art-city-exhibition-exposition-gallery",
+  "winter-town-filled-vectors-bench-bus-station-stop-transportation",
+  "winter-town-filled-vectors-bird-house-birdhouse-winter-snow",
+  "winter-town-filled-vectors-box-email-letter-letterbox-mail",
+  "winter-town-filled-vectors-building-business-hotel-motel-small",
+  "winter-town-filled-vectors-building-christmas-church-snow-winter",
+  "winter-town-filled-vectors-building-clinic-healthcare-hospital-winter",
+  "winter-town-filled-vectors-building-company-office-real-estate",
+  "winter-town-filled-vectors-building-education-school-winter-snow",
+  "winter-town-filled-vectors-building-home-house-townhouse-townhouses",
+  "winter-town-filled-vectors-bus-campervan-minivan-snow-winter",
+  "winter-town-filled-vectors-bus-public-transport-school",
+  "winter-town-filled-vectors-cabin-destination-house-winter-wood",
+  "winter-town-filled-vectors-cable-car-holiday-vacation-winter",
+  "winter-town-filled-vectors-camping-snow-tent-winter",
+  "winter-town-filled-vectors-canal-dam-drain-irrigation-water",
+  "winter-town-filled-vectors-car-garage-park-parking-winter",
+  "winter-town-filled-vectors-car-ice-snow-snowflake-winter",
+  "winter-town-filled-vectors-car-public-transport-taxi",
+  "winter-town-filled-vectors-carnival-carousel-circus-winter-snow",
+  "winter-town-filled-vectors-christmas-holiday-light-street-winter",
+  "winter-town-filled-vectors-christmas-tree-holidays-trees-winter",
+  "winter-town-filled-vectors-cold-cool-icicles-weather-winter",
+  "winter-town-filled-vectors-cold-season-snow-train-winter",
+  "winter-town-filled-vectors-do-enter-entry-no-not",
+  "winter-town-filled-vectors-egypt-landmarks-monument-obelisk-world",
+  "winter-town-filled-vectors-fence-fences-garden-protection-security",
+  "winter-town-filled-vectors-fire-firefighter-hydrant-protection-security",
+  "winter-town-filled-vectors-firewood-log-winter-wood-snow",
+  "winter-town-filled-vectors-forecast-meteorology-weather-sock-wind",
+  "winter-town-filled-vectors-fountain-frozen-park-garden-winter",
+  "winter-town-filled-vectors-frosty-new-year-snowman-winter",
+  "winter-town-filled-vectors-funeral-gravestone-graveyard-winter-rip",
+  "winter-town-filled-vectors-hotel-bedroom-apartement-indoor-travel",
+  "winter-town-filled-vectors-house-winter-wooden-snow",
+  "winter-town-filled-vectors-lamp-light-navigation-regulation-winter",
+  "winter-town-filled-vectors-market-store-shop-winter",
+  "winter-town-filled-vectors-shovel-weather-snow-winter",
+  "winter-town-filled-vectors-signboard-cafe-shop-winter-snow-2",
+  "winter-town-filled-vectors-signboard-cafe-shop-winter-snow-3",
+  "winter-town-filled-vectors-signboard-cafe-shop-winter-snow",
+  "winter-town-filled-vectors-signpost-road-sign-street-guidepost-2",
+  "winter-town-filled-vectors-signpost-road-sign-street-guidepost",
+  "winter-town-filled-vectors-ski-snow-tram-winter-cable",
+  "winter-town-filled-vectors-snow-christmas-decoration-holiday-window",
+  "winter-town-filled-vectors-tree-wood-winter-stump"
+] as const;
+
+export type ColorIconClassicName = (typeof ColorIconClassicNames)[number];
 
 export interface ColorIconClassicProps extends SvgProps {
   name: ColorIconClassicName;
@@ -207,17 +209,13 @@ export function ColorIconClassic({ name, ...props }: ColorIconClassicProps) {
     case 'halloween-scary-vectors-broomstick-fly-magic':
       return <HalloweenScaryVectorsBroomstickFlyMagicIcon {...props} />;
     case 'halloween-scary-vectors-burning-candles-candles-halloween':
-      return (
-        <HalloweenScaryVectorsBurningCandlesCandlesHalloweenIcon {...props} />
-      );
+      return <HalloweenScaryVectorsBurningCandlesCandlesHalloweenIcon {...props} />;
     case 'halloween-scary-vectors-castle-ghost-house-horror':
       return <HalloweenScaryVectorsCastleGhostHouseHorrorIcon {...props} />;
     case 'halloween-scary-vectors-cauldron-halloween-pot':
       return <HalloweenScaryVectorsCauldronHalloweenPotIcon {...props} />;
     case 'halloween-scary-vectors-cemetery-gravestone-graveyard':
-      return (
-        <HalloweenScaryVectorsCemeteryGravestoneGraveyardIcon {...props} />
-      );
+      return <HalloweenScaryVectorsCemeteryGravestoneGraveyardIcon {...props} />;
     case 'halloween-scary-vectors-death-grim-reaper':
       return <HalloweenScaryVectorsDeathGrimReaperIcon {...props} />;
     case 'halloween-scary-vectors-devil-dracula-vampire':
@@ -251,233 +249,103 @@ export function ColorIconClassic({ name, ...props }: ColorIconClassicProps) {
     case 'tricycle':
       return <TricycleIcon {...props} />;
     case 'winter-town-filled-vectors-agriculture-countryside-farm-farming-farmland':
-      return (
-        <WinterTownFilledVectorsAgricultureCountrysideFarmFarmingFarmlandIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsAgricultureCountrysideFarmFarmingFarmlandIcon {...props} />;
     case 'winter-town-filled-vectors-amenities-city-council-meter-parking':
-      return (
-        <WinterTownFilledVectorsAmenitiesCityCouncilMeterParkingIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsAmenitiesCityCouncilMeterParkingIcon {...props} />;
     case 'winter-town-filled-vectors-architecture-ben-big-clock-landmark':
-      return (
-        <WinterTownFilledVectorsArchitectureBenBigClockLandmarkIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsArchitectureBenBigClockLandmarkIcon {...props} />;
     case 'winter-town-filled-vectors-area-bench-nature-park-rest':
       return <WinterTownFilledVectorsAreaBenchNatureParkRestIcon {...props} />;
     case 'winter-town-filled-vectors-art-city-exhibition-exposition-gallery':
-      return (
-        <WinterTownFilledVectorsArtCityExhibitionExpositionGalleryIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsArtCityExhibitionExpositionGalleryIcon {...props} />;
     case 'winter-town-filled-vectors-bench-bus-station-stop-transportation':
-      return (
-        <WinterTownFilledVectorsBenchBusStationStopTransportationIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBenchBusStationStopTransportationIcon {...props} />;
     case 'winter-town-filled-vectors-bird-house-birdhouse-winter-snow':
-      return (
-        <WinterTownFilledVectorsBirdHouseBirdhouseWinterSnowIcon {...props} />
-      );
+      return <WinterTownFilledVectorsBirdHouseBirdhouseWinterSnowIcon {...props} />;
     case 'winter-town-filled-vectors-box-email-letter-letterbox-mail':
-      return (
-        <WinterTownFilledVectorsBoxEmailLetterLetterboxMailIcon {...props} />
-      );
+      return <WinterTownFilledVectorsBoxEmailLetterLetterboxMailIcon {...props} />;
     case 'winter-town-filled-vectors-building-business-hotel-motel-small':
-      return (
-        <WinterTownFilledVectorsBuildingBusinessHotelMotelSmallIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingBusinessHotelMotelSmallIcon {...props} />;
     case 'winter-town-filled-vectors-building-christmas-church-snow-winter':
-      return (
-        <WinterTownFilledVectorsBuildingChristmasChurchSnowWinterIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingChristmasChurchSnowWinterIcon {...props} />;
     case 'winter-town-filled-vectors-building-clinic-healthcare-hospital-winter':
-      return (
-        <WinterTownFilledVectorsBuildingClinicHealthcareHospitalWinterIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingClinicHealthcareHospitalWinterIcon {...props} />;
     case 'winter-town-filled-vectors-building-company-office-real-estate':
-      return (
-        <WinterTownFilledVectorsBuildingCompanyOfficeRealEstateIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingCompanyOfficeRealEstateIcon {...props} />;
     case 'winter-town-filled-vectors-building-education-school-winter-snow':
-      return (
-        <WinterTownFilledVectorsBuildingEducationSchoolWinterSnowIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingEducationSchoolWinterSnowIcon {...props} />;
     case 'winter-town-filled-vectors-building-home-house-townhouse-townhouses':
-      return (
-        <WinterTownFilledVectorsBuildingHomeHouseTownhouseTownhousesIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsBuildingHomeHouseTownhouseTownhousesIcon {...props} />;
     case 'winter-town-filled-vectors-bus-campervan-minivan-snow-winter':
-      return (
-        <WinterTownFilledVectorsBusCampervanMinivanSnowWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsBusCampervanMinivanSnowWinterIcon {...props} />;
     case 'winter-town-filled-vectors-bus-public-transport-school':
       return <WinterTownFilledVectorsBusPublicTransportSchoolIcon {...props} />;
     case 'winter-town-filled-vectors-cabin-destination-house-winter-wood':
-      return (
-        <WinterTownFilledVectorsCabinDestinationHouseWinterWoodIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsCabinDestinationHouseWinterWoodIcon {...props} />;
     case 'winter-town-filled-vectors-cable-car-holiday-vacation-winter':
-      return (
-        <WinterTownFilledVectorsCableCarHolidayVacationWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsCableCarHolidayVacationWinterIcon {...props} />;
     case 'winter-town-filled-vectors-camping-snow-tent-winter':
       return <WinterTownFilledVectorsCampingSnowTentWinterIcon {...props} />;
     case 'winter-town-filled-vectors-canal-dam-drain-irrigation-water':
-      return (
-        <WinterTownFilledVectorsCanalDamDrainIrrigationWaterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsCanalDamDrainIrrigationWaterIcon {...props} />;
     case 'winter-town-filled-vectors-car-garage-park-parking-winter':
-      return (
-        <WinterTownFilledVectorsCarGarageParkParkingWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsCarGarageParkParkingWinterIcon {...props} />;
     case 'winter-town-filled-vectors-car-ice-snow-snowflake-winter':
-      return (
-        <WinterTownFilledVectorsCarIceSnowSnowflakeWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsCarIceSnowSnowflakeWinterIcon {...props} />;
     case 'winter-town-filled-vectors-car-public-transport-taxi':
       return <WinterTownFilledVectorsCarPublicTransportTaxiIcon {...props} />;
     case 'winter-town-filled-vectors-carnival-carousel-circus-winter-snow':
-      return (
-        <WinterTownFilledVectorsCarnivalCarouselCircusWinterSnowIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsCarnivalCarouselCircusWinterSnowIcon {...props} />;
     case 'winter-town-filled-vectors-christmas-holiday-light-street-winter':
-      return (
-        <WinterTownFilledVectorsChristmasHolidayLightStreetWinterIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsChristmasHolidayLightStreetWinterIcon {...props} />;
     case 'winter-town-filled-vectors-christmas-tree-holidays-trees-winter':
-      return (
-        <WinterTownFilledVectorsChristmasTreeHolidaysTreesWinterIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsChristmasTreeHolidaysTreesWinterIcon {...props} />;
     case 'winter-town-filled-vectors-cold-cool-icicles-weather-winter':
-      return (
-        <WinterTownFilledVectorsColdCoolIciclesWeatherWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsColdCoolIciclesWeatherWinterIcon {...props} />;
     case 'winter-town-filled-vectors-cold-season-snow-train-winter':
-      return (
-        <WinterTownFilledVectorsColdSeasonSnowTrainWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsColdSeasonSnowTrainWinterIcon {...props} />;
     case 'winter-town-filled-vectors-do-enter-entry-no-not':
       return <WinterTownFilledVectorsDoEnterEntryNoNotIcon {...props} />;
     case 'winter-town-filled-vectors-egypt-landmarks-monument-obelisk-world':
-      return (
-        <WinterTownFilledVectorsEgyptLandmarksMonumentObeliskWorldIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsEgyptLandmarksMonumentObeliskWorldIcon {...props} />;
     case 'winter-town-filled-vectors-fence-fences-garden-protection-security':
-      return (
-        <WinterTownFilledVectorsFenceFencesGardenProtectionSecurityIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsFenceFencesGardenProtectionSecurityIcon {...props} />;
     case 'winter-town-filled-vectors-fire-firefighter-hydrant-protection-security':
-      return (
-        <WinterTownFilledVectorsFireFirefighterHydrantProtectionSecurityIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsFireFirefighterHydrantProtectionSecurityIcon {...props} />;
     case 'winter-town-filled-vectors-firewood-log-winter-wood-snow':
-      return (
-        <WinterTownFilledVectorsFirewoodLogWinterWoodSnowIcon {...props} />
-      );
+      return <WinterTownFilledVectorsFirewoodLogWinterWoodSnowIcon {...props} />;
     case 'winter-town-filled-vectors-forecast-meteorology-weather-sock-wind':
-      return (
-        <WinterTownFilledVectorsForecastMeteorologyWeatherSockWindIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsForecastMeteorologyWeatherSockWindIcon {...props} />;
     case 'winter-town-filled-vectors-fountain-frozen-park-garden-winter':
-      return (
-        <WinterTownFilledVectorsFountainFrozenParkGardenWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsFountainFrozenParkGardenWinterIcon {...props} />;
     case 'winter-town-filled-vectors-frosty-new-year-snowman-winter':
-      return (
-        <WinterTownFilledVectorsFrostyNewYearSnowmanWinterIcon {...props} />
-      );
+      return <WinterTownFilledVectorsFrostyNewYearSnowmanWinterIcon {...props} />;
     case 'winter-town-filled-vectors-funeral-gravestone-graveyard-winter-rip':
-      return (
-        <WinterTownFilledVectorsFuneralGravestoneGraveyardWinterRipIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsFuneralGravestoneGraveyardWinterRipIcon {...props} />;
     case 'winter-town-filled-vectors-hotel-bedroom-apartement-indoor-travel':
-      return (
-        <WinterTownFilledVectorsHotelBedroomApartementIndoorTravelIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsHotelBedroomApartementIndoorTravelIcon {...props} />;
     case 'winter-town-filled-vectors-house-winter-wooden-snow':
       return <WinterTownFilledVectorsHouseWinterWoodenSnowIcon {...props} />;
     case 'winter-town-filled-vectors-lamp-light-navigation-regulation-winter':
-      return (
-        <WinterTownFilledVectorsLampLightNavigationRegulationWinterIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsLampLightNavigationRegulationWinterIcon {...props} />;
     case 'winter-town-filled-vectors-market-store-shop-winter':
       return <WinterTownFilledVectorsMarketStoreShopWinterIcon {...props} />;
     case 'winter-town-filled-vectors-shovel-weather-snow-winter':
       return <WinterTownFilledVectorsShovelWeatherSnowWinterIcon {...props} />;
     case 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow-2':
-      return (
-        <WinterTownFilledVectorsSignboardCafeShopWinterSnow2Icon {...props} />
-      );
+      return <WinterTownFilledVectorsSignboardCafeShopWinterSnow2Icon {...props} />;
     case 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow-3':
-      return (
-        <WinterTownFilledVectorsSignboardCafeShopWinterSnow3Icon {...props} />
-      );
+      return <WinterTownFilledVectorsSignboardCafeShopWinterSnow3Icon {...props} />;
     case 'winter-town-filled-vectors-signboard-cafe-shop-winter-snow':
-      return (
-        <WinterTownFilledVectorsSignboardCafeShopWinterSnowIcon {...props} />
-      );
+      return <WinterTownFilledVectorsSignboardCafeShopWinterSnowIcon {...props} />;
     case 'winter-town-filled-vectors-signpost-road-sign-street-guidepost-2':
-      return (
-        <WinterTownFilledVectorsSignpostRoadSignStreetGuidepost2Icon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsSignpostRoadSignStreetGuidepost2Icon {...props} />;
     case 'winter-town-filled-vectors-signpost-road-sign-street-guidepost':
-      return (
-        <WinterTownFilledVectorsSignpostRoadSignStreetGuidepostIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsSignpostRoadSignStreetGuidepostIcon {...props} />;
     case 'winter-town-filled-vectors-ski-snow-tram-winter-cable':
       return <WinterTownFilledVectorsSkiSnowTramWinterCableIcon {...props} />;
     case 'winter-town-filled-vectors-snow-christmas-decoration-holiday-window':
-      return (
-        <WinterTownFilledVectorsSnowChristmasDecorationHolidayWindowIcon
-          {...props}
-        />
-      );
+      return <WinterTownFilledVectorsSnowChristmasDecorationHolidayWindowIcon {...props} />;
     case 'winter-town-filled-vectors-tree-wood-winter-stump':
       return <WinterTownFilledVectorsTreeWoodWinterStumpIcon {...props} />;
     default:

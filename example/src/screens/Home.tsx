@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../Router';
 import { useDebugContext } from '../contexts/DebugContext';
@@ -11,117 +11,116 @@ export default function Home({ navigation }: Props) {
   const handleNavigate = (
     screenName:
       | 'Monochrome'
+      | 'MonochromeFixed'
+      | 'MonochromeFixedClassic'
       | 'MonochromeClassic'
       | 'ColorFonts'
-      | 'ColorFontsClassic',
-    iconSize: number,
-    numColumns: number,
-    colorful?: boolean
+      | 'ColorFontsClassic'
   ) => {
     startCounter(`debugNavigationStarted-${screenName}`);
-    navigation.navigate(screenName, { iconSize, numColumns, colorful });
+    navigation.navigate(screenName);
   };
 
-  const handlePushHomePage = () => {
-    startCounter('debugNavigationStarted-HomePage');
-    navigation.navigate('HomePage');
-  };
+  const tableRows = [
+    {
+      key: 'mono-font',
+      monoColor: 'Mono',
+      engine: 'Font',
+      fixed: false,
+      detail: '48px / 4 cols',
+      action: () => handleNavigate('Monochrome'),
+    },
+    {
+      key: 'mono-font-fixed',
+      monoColor: 'Mono',
+      engine: 'Font',
+      fixed: true,
+      detail: '48px / 4 cols',
+      action: () => handleNavigate('MonochromeFixedClassic'),
+    },
+    {
+      key: 'mono-svg',
+      monoColor: 'Mono',
+      engine: 'SVG',
+      fixed: false,
+      detail: '48px / 4 cols',
+      action: () => handleNavigate('MonochromeClassic'),
+    },
+    {
+      key: 'mono-svg-fixed',
+      monoColor: 'Mono',
+      engine: 'SVG',
+      fixed: true,
+      detail: '48px / 4 cols',
+      action: () => handleNavigate('MonochromeFixed'),
+    },
+    {
+      key: 'color-font',
+      monoColor: 'Color',
+      engine: 'Font',
+      fixed: false,
+      detail: '24px / 6 cols',
+      action: () => handleNavigate('ColorFonts'),
+    },
+    {
+      key: 'color-svg',
+      monoColor: 'Color',
+      engine: 'SVG',
+      fixed: false,
+      detail: '24px / 6 cols',
+      action: () => handleNavigate('ColorFontsClassic'),
+    },
+  ];
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>React Native Font Icon</Text>
-
-      <Text style={styles.sectionTitle}>Font Family</Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="1x"
-          onPress={() => handleNavigate('Monochrome', 16, 12)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="2x"
-          onPress={() => handleNavigate('Monochrome', 32, 6)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="3x"
-          onPress={() => handleNavigate('Monochrome', 48, 4)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="1x Colorful"
-          onPress={() => handleNavigate('Monochrome', 16, 12, true)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="2x Colorful"
-          onPress={() => handleNavigate('Monochrome', 32, 6, true)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="3x Colorful"
-          onPress={() => handleNavigate('Monochrome', 48, 4, true)}
-        />
-      </View>
-
-      <Text style={styles.sectionTitle}>react-native-svg</Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="1x"
-          onPress={() => handleNavigate('MonochromeClassic', 16, 12)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="2x"
-          onPress={() => handleNavigate('MonochromeClassic', 32, 6)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="3x"
-          onPress={() => handleNavigate('MonochromeClassic', 48, 4)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="1x Colorful"
-          onPress={() => handleNavigate('MonochromeClassic', 16, 12, true)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="2x Colorful"
-          onPress={() => handleNavigate('MonochromeClassic', 32, 6, true)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="3x Colorful"
-          onPress={() => handleNavigate('MonochromeClassic', 48, 4, true)}
-        />
-      </View>
-      <Text style={styles.sectionTitle}>Color Fonts</Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Color Font Grid (FontIcon)"
-          onPress={() => handleNavigate('ColorFonts', 24, 6, true)}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Color Font Grid (SVG)"
-          onPress={() => handleNavigate('ColorFontsClassic', 24, 6, true)}
-        />
-      </View>
-      <Text style={styles.sectionTitle}>Home Page</Text>
-      <View style={styles.buttonContainer}>
-        <Button title="Open HomePage screen" onPress={handlePushHomePage} />
+      <Text style={styles.tableNote}>Use “Open” to view.</Text>
+      <View style={styles.table}>
+        <View style={[styles.row, styles.headerRow]}>
+          <Text style={[styles.cell, styles.headerCell, styles.typeCell]}>
+            Mono / Color
+          </Text>
+          <Text style={[styles.cell, styles.headerCell]}>SVG / Font</Text>
+          <Text style={[styles.cell, styles.headerCell]}>Fixed</Text>
+          <Text style={[styles.cell, styles.headerCell]}>Open</Text>
+          <Text style={[styles.cell, styles.headerCell]}>Details</Text>
+        </View>
+        {tableRows.map((row, idx) => {
+          const disabled = !row.action;
+          return (
+            <View
+              key={row.key}
+              style={[
+                styles.row,
+                idx % 2 === 1 ? styles.rowAlt : null,
+                disabled ? styles.rowDisabled : null,
+              ]}
+            >
+              <Text style={[styles.cell, styles.typeCell]}>
+                {row.monoColor}
+              </Text>
+              <Text style={styles.cell}>{row.engine}</Text>
+              <Text style={styles.cell}>{row.fixed ? 'Yes' : 'No'}</Text>
+              <View style={[styles.cell, styles.actionCell]}>
+                {row.action ? (
+                  <Pressable
+                    onPress={row.action}
+                    style={({ pressed }) => [
+                      styles.actionButton,
+                      pressed ? styles.actionButtonPressed : null,
+                    ]}
+                  >
+                    <Text style={styles.actionButtonText}>Open</Text>
+                  </Pressable>
+                ) : (
+                  <Text style={styles.muted}>—</Text>
+                )}
+              </View>
+              <Text style={[styles.cell, styles.detailCell]}>{row.detail}</Text>
+            </View>
+          );
+        })}
       </View>
     </ScrollView>
   );
@@ -130,7 +129,7 @@ export default function Home({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 0,
     backgroundColor: '#fff',
   },
   title: {
@@ -138,14 +137,71 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 24,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#333',
-    marginTop: 16,
+  tableNote: {
+    fontSize: 13,
+    color: '#666',
     marginBottom: 8,
   },
-  buttonContainer: {
-    marginTop: 12,
+  table: {
+    backgroundColor: '#fafafa',
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 1,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  headerRow: {
+    backgroundColor: '#f1f1f1',
+  },
+  cell: {
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    flex: 1,
+    fontSize: 12,
+    color: '#222',
+  },
+  actionCell: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  actionButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    backgroundColor: '#2563eb',
+    borderRadius: 6,
+  },
+  actionButtonPressed: {
+    opacity: 0.85,
+  },
+  actionButtonText: {
+    color: '#fff',
+    fontWeight: '700',
+  },
+  detailCell: {
+    textAlign: 'right',
+  },
+  muted: {
+    color: '#999',
+  },
+  headerCell: {
+    fontWeight: '700',
+  },
+  typeCell: {
+    flex: 1.2,
+  },
+  rowAlt: {
+    backgroundColor: '#fff',
+  },
+  rowPressed: {
+    backgroundColor: '#f0f6ff',
+  },
+  rowDisabled: {
+    opacity: 0.5,
   },
 });

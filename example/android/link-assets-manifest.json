@@ -15,7 +15,7 @@
     },
     {
       "path": "src/assets/fonts/font-family.eot",
-      "sha1": "010881c78e50357ddb947ddeae6c2b23c7db184b"
+      "sha1": "f4be49840bd8f18cf1fdcee77c1da1692b54d595"
     },
     {
       "path": "src/assets/fonts/font-family.json",
@@ -27,19 +27,47 @@
     },
     {
       "path": "src/assets/fonts/font-family.symbol.svg",
-      "sha1": "c8721df87ec0e4581c8a4e7806774329c3f77df7"
+      "sha1": "127f2db386520ea452e1ff02023e32f453ef1b79"
     },
     {
       "path": "src/assets/fonts/font-family.ttf",
-      "sha1": "886856179fe19d619122ab29d608bd4b580f4878"
+      "sha1": "24644c88221d210fd8cb732fa170842da0107c85"
     },
     {
       "path": "src/assets/fonts/font-family.woff",
-      "sha1": "5f3537794cb2952a594be5acd612e2d1d4c4c210"
+      "sha1": "c9497ed50181c617c6a5e1ef493596518a82a6ce"
     },
     {
       "path": "src/assets/fonts/font-family.woff2",
-      "sha1": "47ff2aa7eb6c6796a7d2f2938de01c5c299859c9"
+      "sha1": "e338a45bd12ae980ae12992cb0c57afef7d7a2d4"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.eot",
+      "sha1": "0bcf782d38bed7c30fed86954cfb9d27db565725"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.json",
+      "sha1": "2dcf54624091856756958c72569416f27f56bca3"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.svg",
+      "sha1": "648f359b60072b030ea67c2228351106d2bd7d3d"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.symbol.svg",
+      "sha1": "d105bb990b08bd43dc138463e3b11482520f0f95"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.ttf",
+      "sha1": "3fc8361cb0c5ddfacd3240f6fdae2eecaa195508"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.woff",
+      "sha1": "ae67d59d56f908acf6dfe453cffe86d11afa86a7"
+    },
+    {
+      "path": "src/assets/fonts/icons_fixed.woff2",
+      "sha1": "bf0eba2cfa8941ab06741ed06826505d7212b4a4"
     }
   ]
 }

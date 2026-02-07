@@ -1,0 +1,15 @@
+{
+  "folderLastChangeDate": "2025-12-04T15:17:53.147Z",
+  "glyphMapHash": "cc9f9e5d0d25866ab8d1c58ec24f58c09b9b6a181abc432b7ded894ca7ff802d",
+  "fontName": "custom-font-colors",
+  "outputs": [
+    {
+      "platform": "android",
+      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/custom-font-colors-android.ttf"
+    },
+    {
+      "platform": "ios",
+      "path": "/Users/hasbisefademir/Projects/Libraries/react-native-font-icon/example/src/assets/fonts/custom-font-colors-ios.ttf"
+    }
+  ]
+}

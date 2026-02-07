@@ -5,25 +5,22 @@ import HomePage from './screens/HomePage';
 import ColorFonts from './screens/ColorFonts';
 import ColorFontsClassic from './screens/ColorFontsClassic';
 import Monochrome from './screens/Monochrome';
+import MonochromeFixed from './screens/MonochromeFixed';
 import MonochromeClassic from './screens/MonochromeClassic';
+// @ts-ignore - resolver in lint misses this local screen file
+import MonochromeFixedClassic from './screens/MonochromeFixedClassic';
 
 enableScreens();
 
 export type RootStackParamList = {
   Home: undefined;
   HomePage: undefined;
-  ColorFonts: { iconSize: number; numColumns: number; colorful?: boolean };
-  Monochrome: { iconSize: number; numColumns: number; colorful?: boolean };
-  MonochromeClassic: {
-    iconSize: number;
-    numColumns: number;
-    colorful?: boolean;
-  };
-  ColorFontsClassic: {
-    iconSize: number;
-    numColumns: number;
-    colorful?: boolean;
-  };
+  ColorFonts: undefined;
+  Monochrome: undefined;
+  MonochromeFixed: undefined;
+  MonochromeClassic: undefined;
+  MonochromeFixedClassic: undefined;
+  ColorFontsClassic: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -55,6 +52,16 @@ export default function Router() {
         name="Monochrome"
         component={Monochrome}
         options={{ title: 'Monochrome Icons' }}
+      />
+      <Stack.Screen
+        name="MonochromeFixed"
+        component={MonochromeFixed}
+        options={{ title: 'Monochrome Icons (Fixed SVG)' }}
+      />
+      <Stack.Screen
+        name="MonochromeFixedClassic"
+        component={MonochromeFixedClassic}
+        options={{ title: 'Monochrome Icons (Fixed Font)' }}
       />
       <Stack.Screen
         name="MonochromeClassic"
