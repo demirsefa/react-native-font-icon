@@ -1,0 +1,11 @@
+# Policy: the CLI does not auto-install python dependencies.
+# Users must install manually, e.g.:
+#   python -m pip install -r python-utils/requirements.txt 
+
+# Color font generator (used by cli/scripts/colors)
+nanoemoji>=0.10
+
+# Needed by nanoemoji for bitmap color formats (sbix/CBDT).
+# nanoemoji requires a `resvg` executable on PATH; resvg-cli provides it.
+resvg-cli>=0.35
+

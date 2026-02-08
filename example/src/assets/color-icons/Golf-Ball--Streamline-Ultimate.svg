@@ -1,0 +1,34 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_5303_11487)">
+<path d="M11.9912 15.8132C17.6928 15.8198 21.2633 9.65174 18.4183 4.71069C17.0948 2.41229 14.6434 0.996984 11.9912 1C6.28953 1.00654 2.73315 7.18282 5.58963 12.1173C6.91222 14.4022 9.35117 15.8101 11.9912 15.8132Z" fill="white"/>
+<path d="M15.5945 1.93457C18.3685 6.9168 14.7088 13.0335 9.0072 12.9448C7.78543 12.9258 6.58728 12.6047 5.51953 12.0105C8.29549 16.9906 15.4216 17.0984 18.3467 12.2042C20.4904 8.61759 19.2445 3.96857 15.5945 1.93457Z" fill="#E3E3E3"/>
+<path d="M11.9912 15.8132C17.6928 15.8198 21.2633 9.65173 18.4183 4.71069C17.0948 2.41229 14.6434 0.996984 11.9912 1C6.28953 1.00654 2.73315 7.18282 5.58963 12.1173C6.91222 14.4022 9.35117 15.8101 11.9912 15.8132Z" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.7698 16.8444C13.8414 18.6549 10.1413 18.6549 7.21289 16.8444" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.9902 18.2024V23" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.335 5.08081C15.4669 5.08081 15.5739 5.18778 15.5739 5.31974" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.0967 5.31974C15.0967 5.18778 15.2037 5.08081 15.3356 5.08081" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.3356 5.55863C15.2037 5.55863 15.0967 5.45166 15.0967 5.3197" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.5739 5.3197C15.5739 5.45166 15.4669 5.55863 15.335 5.55863" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.7686 8.42566C16.9005 8.42566 17.0075 8.53263 17.0075 8.66459" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5303 8.66459C16.5303 8.53263 16.6372 8.42566 16.7692 8.42566" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.7692 8.90348C16.6372 8.90348 16.5303 8.79651 16.5303 8.66455" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.0075 8.66455C17.0075 8.79651 16.9005 8.90348 16.7686 8.90348" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.4238 8.90356C13.5558 8.90356 13.6628 9.01053 13.6628 9.14249" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.1846 9.14249C13.1846 9.01053 13.2915 8.90356 13.4235 8.90356" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.4235 9.38138C13.2915 9.38138 13.1846 9.27441 13.1846 9.14246" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.6628 9.14246C13.6628 9.27441 13.5558 9.38138 13.4238 9.38138" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.8574 12.2485C14.9894 12.2485 15.0963 12.3555 15.0963 12.4874" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.6182 12.4874C14.6182 12.3555 14.7251 12.2485 14.8571 12.2485" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.8571 12.7264C14.7251 12.7264 14.6182 12.6194 14.6182 12.4875" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.0963 12.4875C15.0963 12.6194 14.9894 12.7264 14.8574 12.7264" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.0342 12.2485C11.1661 12.2485 11.2731 12.3555 11.2731 12.4874" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.7969 12.4874C10.7969 12.3555 10.9038 12.2485 11.0358 12.2485" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.0358 12.7264C10.9038 12.7264 10.7969 12.6194 10.7969 12.4875" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.2731 12.4875C11.2731 12.6194 11.1661 12.7264 11.0342 12.7264" stroke="#191919" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_5303_11487">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

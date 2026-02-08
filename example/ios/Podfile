@@ -33,5 +33,68 @@ target 'FontIconExample' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Fix occasional invalid path expansion in the ReactCodegen "Generate Specs" script phase
+    # (can end up with too many `../` and resolve to `/Projects/...` instead of `/Users/...`).
+    installer.pods_project.targets.each do |target|
+      next unless target.name == 'ReactCodegen'
+
+      target.build_phases.each do |phase|
+        next unless phase.respond_to?(:name) && phase.name == '[CP-User] Generate Specs'
+        next unless phase.respond_to?(:shell_script) && phase.shell_script
+
+        script = phase.shell_script
+        
+        # Fix old format: pushd "$PODS_ROOT/../" > /dev/null ... popd >/dev/null
+        script = script.gsub(
+          /pushd "\$PODS_ROOT\/\.\.\/" > \/dev\/null\s+RCT_SCRIPT_POD_INSTALLATION_ROOT=\$\(pwd\)\s+popd >\/dev\/null/m,
+          "PODS_ROOT_RESOLVED=\"$(cd \\\"$PODS_ROOT\\\" && pwd -P)\"\nRCT_SCRIPT_POD_INSTALLATION_ROOT=\"$(cd \\\"$PODS_ROOT_RESOLVED/..\\\" && pwd -P)\""
+        )
+
+        # Fix current format too: avoid broken quoting that can produce literal quotes in `cd` argument.
+        # Use unquoted `$PODS_ROOT` (path has no spaces in this repo) to sidestep escaping issues.
+        script = script.gsub(
+          'PODS_ROOT_RESOLVED="$(cd \"$PODS_ROOT\" && pwd -P)"',
+          'PODS_ROOT_RESOLVED="$(cd $PODS_ROOT && pwd -P)"'
+        )
+        script = script.gsub(
+          'PODS_ROOT_RESOLVED="$(cd "$PODS_ROOT" && pwd -P)"',
+          'PODS_ROOT_RESOLVED="$(cd $PODS_ROOT && pwd -P)"'
+        )
+        script = script.gsub(
+          'RCT_SCRIPT_POD_INSTALLATION_ROOT="$(cd \"$PODS_ROOT_RESOLVED/..\" && pwd -P)"',
+          'RCT_SCRIPT_POD_INSTALLATION_ROOT="$(cd $PODS_ROOT_RESOLVED/.. && pwd -P)"'
+        )
+        script = script.gsub(
+          'RCT_SCRIPT_POD_INSTALLATION_ROOT="$(cd "$PODS_ROOT_RESOLVED/.." && pwd -P)"',
+          'RCT_SCRIPT_POD_INSTALLATION_ROOT="$(cd $PODS_ROOT_RESOLVED/.. && pwd -P)"'
+        )
+
+        # Fix incorrect path resolution for RCT_SCRIPT_RN_DIR and RCT_SCRIPT_APP_PATH
+        # The generated script may contain excessive ../.. which causes it to fail to find the paths
+        # We replace the complex relative path calculation with a simple relative path from POD_INSTALLATION_ROOT
+        script = script.gsub(
+          /export RCT_SCRIPT_RN_DIR=.*$/,
+          'export RCT_SCRIPT_RN_DIR="$RCT_SCRIPT_POD_INSTALLATION_ROOT/../node_modules/react-native"'
+        )
+        script = script.gsub(
+          /export RCT_SCRIPT_APP_PATH=.*$/,
+          'export RCT_SCRIPT_APP_PATH="$RCT_SCRIPT_POD_INSTALLATION_ROOT/.."'
+        )
+        
+        phase.shell_script = script
+        
+        # Fix if script still contains problematic cd "$PODS_ROOT" that fails
+        
+        # Fix if script still contains problematic cd "$PODS_ROOT" that fails
+        # Ensure PODS_ROOT is resolved before use
+        if script.include?('$PODS_ROOT') && !script.include?('PODS_ROOT_RESOLVED')
+          script = "PODS_ROOT_RESOLVED=\"$(cd \\\"$PODS_ROOT\\\" && pwd -P)\"\n" + script
+          script = script.gsub(/\$PODS_ROOT/, '$PODS_ROOT_RESOLVED')
+        end
+        
+        phase.shell_script = script
+      end
+    end
   end
 end

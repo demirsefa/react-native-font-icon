@@ -10,25 +10,47 @@
 		0C80B921A6F3F58F76C31292 /* libPods-FontIconExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FontIconExample.a */; };
 		0F5E3FE594C63E0467D30D39 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		42CD976ED0BD42728D812066 /* custom-font-monochrome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0870AFDD2416416AA3432D9F /* custom-font-monochrome.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		7AB87BFB9B2643EAB59B6A0C /* custom-font-monochrome-inkscape.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4695D59E0B1B4B2195A32412 /* custom-font-monochrome-inkscape.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		83D5C4AE41704800B93C1CE6 /* font-family.json in Resources */ = {isa = PBXBuildFile; fileRef = 29BB5BE521F74A9F9E1648C6 /* font-family.json */; };
-		D98D153FC00D454EB628978E /* font-family.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7428215A286D43CDA824F00E /* font-family.ttf */; };
+		A8975597E30B471E940EC2DF /* custom-font-colors.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C451E3BCBCAF4FEA87199466 /* custom-font-colors.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06ECCAA10937458A8AABB2CF /* custom-font-monochrome.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-monochrome.json"; path = "../src/assets/fonts/common/custom-font-monochrome.json"; sourceTree = "<group>"; };
+		0870AFDD2416416AA3432D9F /* custom-font-monochrome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-monochrome.ttf"; path = "../src/assets/fonts/common/custom-font-monochrome.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FontIconExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FontIconExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FontIconExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FontIconExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = FontIconExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		29BB5BE521F74A9F9E1648C6 /* font-family.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.json"; path = "../src/assets/fonts/font-family.json"; sourceTree = "<group>"; };
+		20422D37FE6E46F0997397CF /* icons_fixed.woff2 */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.woff2; path = ../src/assets/fonts/icons_fixed.woff2; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-FontIconExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FontIconExample.debug.xcconfig"; path = "Target Support Files/Pods-FontIconExample/Pods-FontIconExample.debug.xcconfig"; sourceTree = "<group>"; };
+		4695D59E0B1B4B2195A32412 /* custom-font-monochrome-inkscape.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-monochrome-inkscape.ttf"; path = "../src/assets/fonts/common/custom-font-monochrome-inkscape.ttf"; sourceTree = "<group>"; };
+		50CE6A91866746BA8B610FF6 /* icons_fixed.symbol.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.symbol.svg; path = ../src/assets/fonts/icons_fixed.symbol.svg; sourceTree = "<group>"; };
+		50E50931A3164B54B08E9DC6 /* icons_fixed.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.ttf; path = ../src/assets/fonts/icons_fixed.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-FontIconExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FontIconExample.release.xcconfig"; path = "Target Support Files/Pods-FontIconExample/Pods-FontIconExample.release.xcconfig"; sourceTree = "<group>"; };
+		579E2814ADDD43008B62FAA4 /* font-family.eot */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.eot"; path = "../src/assets/fonts/font-family.eot"; sourceTree = "<group>"; };
+		5D9C5A047BC54F21A5427C6E /* font-family.symbol.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.symbol.svg"; path = "../src/assets/fonts/font-family.symbol.svg"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-FontIconExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FontIconExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7428215A286D43CDA824F00E /* font-family.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.ttf"; path = "../src/assets/fonts/font-family.ttf"; sourceTree = "<group>"; };
+		67FCC99A1B634E59BFA514D5 /* font-family.woff2 */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.woff2"; path = "../src/assets/fonts/font-family.woff2"; sourceTree = "<group>"; };
+		71C22E0BBA4943F7940B28F3 /* icons_fixed.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.svg; path = ../src/assets/fonts/icons_fixed.svg; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FontIconExample/AppDelegate.swift; sourceTree = "<group>"; };
+		80918014B6134C8C8AE10AE6 /* font-family.woff */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.woff"; path = "../src/assets/fonts/font-family.woff"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FontIconExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E33D4C7DA3C45BCB52219B0 /* font-family.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.json"; path = "../src/assets/fonts/font-family.json"; sourceTree = "<group>"; };
+		A47DCC0F31484ACEBA63B4A6 /* icons_fixed.eot */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.eot; path = ../src/assets/fonts/icons_fixed.eot; sourceTree = "<group>"; };
+		A5766DF1BD0543E8A44AFDB9 /* color-family-glyphmap.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "color-family-glyphmap.json"; path = "../src/assets/fonts/color-family-glyphmap.json"; sourceTree = "<group>"; };
+		AC9120533CF541EAB4FE61F3 /* icons_fixed.woff */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.woff; path = ../src/assets/fonts/icons_fixed.woff; sourceTree = "<group>"; };
+		B20CC54FB28C438A834DED3B /* icons_fixed.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icons_fixed.json; path = ../src/assets/fonts/icons_fixed.json; sourceTree = "<group>"; };
+		C451E3BCBCAF4FEA87199466 /* custom-font-colors.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-colors.ttf"; path = "../src/assets/fonts/ios/custom-font-colors.ttf"; sourceTree = "<group>"; };
+		D82001FF71134FF684136AB0 /* color-family-android.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "color-family-android.ttf"; path = "../src/assets/fonts/color-family-android.ttf"; sourceTree = "<group>"; };
+		E18C9535456846918E3CA641 /* font-family.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.ttf"; path = "../src/assets/fonts/font-family.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EF17E26FCD1441CA949CE367 /* font-family.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "font-family.svg"; path = "../src/assets/fonts/font-family.svg"; sourceTree = "<group>"; };
+		EFEE4CA8BA5E404698C77E87 /* custom-font-colors-glyphmap.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-colors-glyphmap.json"; path = "../src/assets/fonts/common/custom-font-colors-glyphmap.json"; sourceTree = "<group>"; };
+		F7AB70E3256C4C86AE39E725 /* color-family-ios.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "color-family-ios.ttf"; path = "../src/assets/fonts/color-family-ios.ttf"; sourceTree = "<group>"; };
+		FC8B8BF0482C419893CFFAAC /* custom-font-monochrome-inkscape.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "custom-font-monochrome-inkscape.json"; path = "../src/assets/fonts/common/custom-font-monochrome-inkscape.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +89,31 @@
 		44D503210A4141F3BB7610A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7428215A286D43CDA824F00E /* font-family.ttf */,
-				29BB5BE521F74A9F9E1648C6 /* font-family.json */,
+				D82001FF71134FF684136AB0 /* color-family-android.ttf */,
+				F7AB70E3256C4C86AE39E725 /* color-family-ios.ttf */,
+				A5766DF1BD0543E8A44AFDB9 /* color-family-glyphmap.json */,
+				EF17E26FCD1441CA949CE367 /* font-family.svg */,
+				8E33D4C7DA3C45BCB52219B0 /* font-family.json */,
+				5D9C5A047BC54F21A5427C6E /* font-family.symbol.svg */,
+				E18C9535456846918E3CA641 /* font-family.ttf */,
+				50E50931A3164B54B08E9DC6 /* icons_fixed.ttf */,
+				579E2814ADDD43008B62FAA4 /* font-family.eot */,
+				80918014B6134C8C8AE10AE6 /* font-family.woff */,
+				67FCC99A1B634E59BFA514D5 /* font-family.woff2 */,
+				A47DCC0F31484ACEBA63B4A6 /* icons_fixed.eot */,
+				B20CC54FB28C438A834DED3B /* icons_fixed.json */,
+				71C22E0BBA4943F7940B28F3 /* icons_fixed.svg */,
+				50CE6A91866746BA8B610FF6 /* icons_fixed.symbol.svg */,
+				AC9120533CF541EAB4FE61F3 /* icons_fixed.woff */,
+				20422D37FE6E46F0997397CF /* icons_fixed.woff2 */,
+				C451E3BCBCAF4FEA87199466 /* custom-font-colors.ttf */,
+				0870AFDD2416416AA3432D9F /* custom-font-monochrome.ttf */,
+				4695D59E0B1B4B2195A32412 /* custom-font-monochrome-inkscape.ttf */,
+				EFEE4CA8BA5E404698C77E87 /* custom-font-colors-glyphmap.json */,
+				FC8B8BF0482C419893CFFAAC /* custom-font-monochrome-inkscape.json */,
+				06ECCAA10937458A8AABB2CF /* custom-font-monochrome.json */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -176,8 +218,9 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0F5E3FE594C63E0467D30D39 /* PrivacyInfo.xcprivacy in Resources */,
-				D98D153FC00D454EB628978E /* font-family.ttf in Resources */,
-				83D5C4AE41704800B93C1CE6 /* font-family.json in Resources */,
+				A8975597E30B471E940EC2DF /* custom-font-colors.ttf in Resources */,
+				42CD976ED0BD42728D812066 /* custom-font-monochrome.ttf in Resources */,
+				7AB87BFB9B2643EAB59B6A0C /* custom-font-monochrome-inkscape.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

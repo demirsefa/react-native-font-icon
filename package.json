@@ -5,7 +5,7 @@
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "bin": {
-    "generate-font-icon": "./src/scripts/index.js"
+    "generate": "./cli/index.ts"
   },
   "exports": {
     ".": {
@@ -17,6 +17,7 @@
   },
   "files": [
     "src",
+    "cli",
     "lib",
     "android",
     "ios",
@@ -35,11 +36,16 @@
     "!**/.*"
   ],
   "scripts": {
-    "generate-font-icon": "node ./src/scripts/index.js",
-    "example": "yarn workspace react-native-font-icon-example",
+    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --platform-base-path ./example/src/assets/fonts --font-name custom-font-colors --max 1000",
+    "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1000",
+    "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1000",
+    "example:fonts": "cd example && npx react-native-asset",
+    "example:fonts:reset": "cd example && rm -f ios/link-assets-manifest.json android/link-assets-manifest.json",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "validate": "yarn lint && prettier --check . --ignore-path .gitignore",
+    "validate:write": "yarn lint --fix && prettier --write . --ignore-path .gitignore",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
     "release": "release-it --only-version"
@@ -86,6 +92,8 @@
     "react-native": "0.81.1",
     "react-native-builder-bob": "^0.40.13",
     "release-it": "^19.0.4",
+    "svg-outline-stroke": "^1.3.1",
+    "svgtofont": "^6.4.0",
     "turbo": "^2.5.6",
     "typescript": "5.5.4"
   },

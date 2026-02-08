@@ -1,0 +1,78 @@
+{
+  "steps": [
+    {
+      "id": "type",
+      "title": "1. Type Selection",
+      "options": [
+        {
+          "id": "font",
+          "label": "font",
+          "next": "fontFamily"
+        },
+        {
+          "id": "svg",
+          "label": "svg",
+          "next": "svgType"
+        }
+      ]
+    },
+    {
+      "id": "fontFamily",
+      "title": "2. Font Family Selection",
+      "options": [
+        {
+          "id": "custom-font-monochrome-inkscape",
+          "label": "custom-font-monochrome-inkscape",
+          "next": "count"
+        },
+        {
+          "id": "custom-font-monochrome",
+          "label": "custom-font-monochrome",
+          "next": "count"
+        },
+        {
+          "id": "custom-font-colors",
+          "label": "custom-font-colors",
+          "next": "count"
+        }
+      ]
+    },
+    {
+      "id": "svgType",
+      "title": "2. SVG Type Selection",
+      "options": [
+        {
+          "id": "icons",
+          "label": "icons",
+          "next": "count"
+        },
+        {
+          "id": "color-icons",
+          "label": "color-icons",
+          "next": "count"
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "title": "3. Count Selection",
+      "options": [
+        {
+          "id": "100",
+          "label": "100",
+          "next": "ready"
+        },
+        {
+          "id": "500",
+          "label": "500",
+          "next": "ready"
+        },
+        {
+          "id": "1000",
+          "label": "1000",
+          "next": "ready"
+        }
+      ]
+    }
+  ]
+}

@@ -2,12 +2,16 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/font-family.json",
-      "sha1": "7fa38ceea5980ed6fe4bed18ad17367c2d43e8bf"
+      "path": "src/assets/fonts/ios/custom-font-colors.ttf",
+      "sha1": "3bd70e7e881bee7a8a395ef97db8eaecfe1a4c50"
     },
     {
-      "path": "src/assets/fonts/font-family.ttf",
-      "sha1": "7c590c27778c3155cbdca373f0de254a11bae305"
+      "path": "src/assets/fonts/common/custom-font-monochrome.ttf",
+      "sha1": "3a8c15155a5bdea9f78154e30d360d1055604fb3"
+    },
+    {
+      "path": "src/assets/fonts/common/custom-font-monochrome-inkscape.ttf",
+      "sha1": "a5c3ee8f00a2e3c535731c32365ad493bbca235a"
     }
   ]
 }

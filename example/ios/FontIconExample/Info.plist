@@ -51,7 +51,9 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>font-family.ttf</string>
+		<string>custom-font-colors.ttf</string>
+		<string>custom-font-monochrome.ttf</string>
+		<string>custom-font-monochrome-inkscape.ttf</string>
 	</array>
 </dict>
 </plist>
