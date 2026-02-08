@@ -87,7 +87,7 @@ export async function resolveInkscapeBinary(
 
   throw new CliUserError(
     [
-      '⚠️ EXPERIMENTAL: monochrome sanitize (inkscape)',
+      'EXPERIMENTAL: monochrome sanitize (inkscape)',
       '',
       '`--sanitize-engine inkscape` requires the Inkscape CLI binary (`inkscape`) to be installed.',
       '',

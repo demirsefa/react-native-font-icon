@@ -36,11 +36,11 @@
     "!**/.*"
   ],
   "scripts": {
-    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --sanitize --platform-subfolders --font-name custom-font-colors --max 1",
-    "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1",
-    "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1",
-    "generate:monochrome:example:sanitize:paper": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-paper --sanitize --sanitize-engine paper --max 1",
-    "example": "yarn workspace react-native-font-icon-example",
+    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --platform-base-path ./example/src/assets/fonts --font-name custom-font-colors --max 1000",
+    "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1000",
+    "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1000",
+    "example:fonts": "cd example && npx react-native-asset",
+    "example:fonts:reset": "cd example && rm -f ios/link-assets-manifest.json android/link-assets-manifest.json",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -48,8 +48,7 @@
     "validate:write": "yarn lint --fix && prettier --write . --ignore-path .gitignore",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it --only-version",
-    "example:fonts": "cd example && npx react-native-asset"
+    "release": "release-it --only-version"
   },
   "keywords": [
     "react-native",
@@ -88,7 +87,6 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "jest": "^29.7.0",
-    "paper": "^0.12.18",
     "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-native": "0.81.1",

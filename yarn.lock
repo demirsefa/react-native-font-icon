@@ -11552,13 +11552,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"paper@npm:^0.12.18":
-  version: 0.12.18
-  resolution: "paper@npm:0.12.18"
-  checksum: b535b577cf34a7ed1877c05592ecd8a7ac47d9642c094600c04c4cb39e351ce1308be512be68dbe7dc7c1d0d93f0e91204bf2cb454cdd58175ec31a52f05c65f
-  languageName: node
-  linkType: hard
-
 "parent-module@npm:^1.0.0":
   version: 1.0.1
   resolution: "parent-module@npm:1.0.1"
@@ -12229,7 +12222,6 @@ __metadata:
     eslint-config-prettier: ^10.1.8
     eslint-plugin-prettier: ^5.5.4
     jest: ^29.7.0
-    paper: ^0.12.18
     prettier: ^3.6.2
     react: 19.1.0
     react-native: 0.81.1

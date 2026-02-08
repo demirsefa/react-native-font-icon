@@ -1,16 +1,9 @@
-import { createContext, type ReactNode, type FC } from 'react';
+import { createContext, type ReactNode, useMemo } from 'react';
 
 type FontGlyphMap = Record<string, number>;
 export type FontDataEntry = {
   family: string;
   glyphMap: FontGlyphMap;
-  /**
-   * Optional fallback render for icons that should use SVG instead of fonts.
-   */
-  fallback?: {
-    names: string[];
-    component: FC<any>;
-  };
 };
 export type FontGlyphCollection =
   | ReadonlyArray<FontDataEntry>
@@ -18,6 +11,9 @@ export type FontGlyphCollection =
 
 export type FontIconContextType = {
   fontData: FontGlyphCollection;
+  fontEntries: ReadonlyArray<FontDataEntry>;
+  fontEntryByFamily: Map<string, FontDataEntry>;
+  fallbackFamily: string;
 };
 
 export const FontIconContext = createContext<FontIconContextType | undefined>(
@@ -33,12 +29,37 @@ export interface IconProviderProps {
 }
 
 export function IconProvider(props: IconProviderProps) {
+  const fontEntries = useMemo(
+    () =>
+      Array.isArray(props.fontData)
+        ? props.fontData
+        : Object.values(props.fontData),
+    [props.fontData]
+  );
+  const fontEntryByFamily = useMemo(() => {
+    const entries = new Map<string, FontDataEntry>();
+    fontEntries.forEach((entry) => {
+      entries.set(entry.family, entry);
+    });
+    return entries;
+  }, [fontEntries]);
+  const fallbackFamily = useMemo(
+    () => fontEntries[0]?.family ?? '',
+    [fontEntries]
+  );
+
+  const contextValue = useMemo(
+    () => ({
+      fontData: props.fontData,
+      fontEntries,
+      fontEntryByFamily,
+      fallbackFamily,
+    }),
+    [props.fontData, fontEntries, fontEntryByFamily, fallbackFamily]
+  );
+
   return (
-    <FontIconContext.Provider
-      value={{
-        fontData: props.fontData,
-      }}
-    >
+    <FontIconContext.Provider value={contextValue}>
       {props.children}
     </FontIconContext.Provider>
   );

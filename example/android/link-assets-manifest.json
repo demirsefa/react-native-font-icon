@@ -2,72 +2,28 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/color-family-android.ttf",
-      "sha1": "7dddda36829d930c4c75d8c7fd4d52df241afeed"
+      "path": "src/assets/fonts/android/custom-font-colors.ttf",
+      "sha1": "a4841e36e565325be5a39126b6661992e774bdbc"
     },
     {
-      "path": "src/assets/fonts/color-family-glyphmap.json",
-      "sha1": "666b407dbbd5a8e2a25d00f9289e9e53c8752cd5"
+      "path": "src/assets/fonts/common/custom-font-monochrome.ttf",
+      "sha1": "3a8c15155a5bdea9f78154e30d360d1055604fb3"
     },
     {
-      "path": "src/assets/fonts/color-family-ios.ttf",
-      "sha1": "e77a952b7336e1a3a5e4039eeaedc79bd3fb14d7"
+      "path": "src/assets/fonts/common/custom-font-monochrome-inkscape.ttf",
+      "sha1": "a5c3ee8f00a2e3c535731c32365ad493bbca235a"
     },
     {
-      "path": "src/assets/fonts/font-family.eot",
-      "sha1": "f4be49840bd8f18cf1fdcee77c1da1692b54d595"
+      "path": "src/assets/fonts/common/custom-font-colors-glyphmap.json",
+      "sha1": "eb3a6f9cc1537ba059db8cf87b03457c6bfe5829"
     },
     {
-      "path": "src/assets/fonts/font-family.json",
-      "sha1": "1d1f2ffee9e599cef95944fb62feacff6e3b35ce"
+      "path": "src/assets/fonts/common/custom-font-monochrome-inkscape.json",
+      "sha1": "7acd5ec0530ab147fafc8f9226586198761df089"
     },
     {
-      "path": "src/assets/fonts/font-family.svg",
-      "sha1": "5eaa8f725987f8c1a6b531b57eb4d673de9ffb7b"
-    },
-    {
-      "path": "src/assets/fonts/font-family.symbol.svg",
-      "sha1": "127f2db386520ea452e1ff02023e32f453ef1b79"
-    },
-    {
-      "path": "src/assets/fonts/font-family.ttf",
-      "sha1": "24644c88221d210fd8cb732fa170842da0107c85"
-    },
-    {
-      "path": "src/assets/fonts/font-family.woff",
-      "sha1": "c9497ed50181c617c6a5e1ef493596518a82a6ce"
-    },
-    {
-      "path": "src/assets/fonts/font-family.woff2",
-      "sha1": "e338a45bd12ae980ae12992cb0c57afef7d7a2d4"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.eot",
-      "sha1": "0bcf782d38bed7c30fed86954cfb9d27db565725"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.json",
-      "sha1": "2dcf54624091856756958c72569416f27f56bca3"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.svg",
-      "sha1": "648f359b60072b030ea67c2228351106d2bd7d3d"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.symbol.svg",
-      "sha1": "d105bb990b08bd43dc138463e3b11482520f0f95"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.ttf",
-      "sha1": "3fc8361cb0c5ddfacd3240f6fdae2eecaa195508"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.woff",
-      "sha1": "ae67d59d56f908acf6dfe453cffe86d11afa86a7"
-    },
-    {
-      "path": "src/assets/fonts/icons_fixed.woff2",
-      "sha1": "bf0eba2cfa8941ab06741ed06826505d7212b4a4"
+      "path": "src/assets/fonts/common/custom-font-monochrome.json",
+      "sha1": "1df99389d71a1004340eda2a9d46f120b85ae5f5"
     }
   ]
 }

@@ -14,13 +14,12 @@ export type ColorsParams = {
    * Limit number of icons processed (useful for quick tests).
    */
   max?: number;
-  sanitize?: boolean;
   /**
-   * When true, writes outputs into platform subfolders:
-   * - <dest>/ios/<fontName>.ttf
-   * - <dest>/android/<fontName>.ttf
+   * Optional base folder for platform outputs:
+   * - <platformBasePath>/ios/<fontName>.ttf
+   * - <platformBasePath>/android/<fontName>.ttf
    */
-  platformSubfolders?: boolean;
+  platformBasePath?: string;
 };
 
 export type ColorTarget = {

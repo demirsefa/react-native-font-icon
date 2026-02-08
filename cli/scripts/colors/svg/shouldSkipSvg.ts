@@ -1,4 +1,10 @@
 export function shouldSkipSvg(svgContent: string): boolean {
+  // Check for <mask> elements - picosvg doesn't support them
+  if (/<mask\b/i.test(svgContent)) {
+    return true;
+  }
+
+  // Check for clipPath + gradient combinations
   const clipPathRegex = /<clipPath\b[^>]*>([\s\S]*?)<\/clipPath>/gi;
   let clipMatch: RegExpExecArray | null;
 

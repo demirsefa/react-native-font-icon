@@ -11,7 +11,7 @@ Bu doküman, `generate:monochrome` komutunun **hangi fonksiyonları hangi sıray
   - **`dest`**: output klasörü (TTF + glyphmap json)
   - **`--font-name`**: opsiyonel font adı (verilmezse klasör isminden türetilir)
   - **`--sanitize`**: **EXPERIMENTAL**: SVG'leri compile öncesi sanitize eder (staging klasörüne yazar)
-  - **`--sanitize-engine`**: **EXPERIMENTAL**: `inkscape` (en iyi fidelity, inkscape gerekir) veya `paper` (JS best-effort)
+  - **`--sanitize-engine`**: **EXPERIMENTAL**: `inkscape` (en iyi fidelity, inkscape gerekir)
   - **`--inkscape`**: **EXPERIMENTAL**: inkscape binary path override (`INKSCAPE_PATH` env de desteklenir)
 
 CLI, komut çalışınca şurayı çağırır:

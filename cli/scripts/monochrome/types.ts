@@ -13,13 +13,17 @@ export type MonochromeParams = {
   /**
    * EXPERIMENTAL: sanitize engine to use.
    * - inkscape: highest fidelity (requires inkscape installed)
-   * - paper: best-effort JS transform (may be lossy)
    */
-  sanitizeEngine?: 'inkscape' | 'paper';
+  sanitizeEngine?: 'inkscape';
   /**
    * EXPERIMENTAL: override inkscape binary path.
    */
   inkscape?: string;
+  /**
+   * EXPERIMENTAL: run a post-process outline pass after inkscape.
+   * Off by default to preserve inkscape output.
+   */
+  inkscapeOutline?: boolean;
 };
 
 export type StorageShape = {

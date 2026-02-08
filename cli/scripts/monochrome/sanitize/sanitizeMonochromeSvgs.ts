@@ -4,10 +4,13 @@ import { spawn } from 'node:child_process';
 
 import { CliUserError } from '../../../errors/CliUserError.ts';
 import { resolveInkscapeBinary } from './resolveInkscapeBinary.ts';
+import { createLogger } from '../../../scripts-utils/logger.ts';
 
-export type SanitizeEngine = 'inkscape' | 'paper';
+export type SanitizeEngine = 'inkscape';
 
 import outlineStroke from 'svg-outline-stroke';
+
+const logger = createLogger('monochrome:sanitize');
 
 async function runInkscapeSingle(params: {
   inkscape: string;
@@ -25,6 +28,9 @@ async function runInkscapeSingle(params: {
     '--actions=select-all:all;object-stroke-to-path;object-to-path;export-do',
   ];
 
+  logger.info(
+    `Inkscape command: ${inkscape} ${args.map((arg) => JSON.stringify(arg)).join(' ')}`
+  );
   await new Promise<void>((resolve, reject) => {
     const child = spawn(inkscape, args, { stdio: 'inherit' });
     child.on('error', reject);
@@ -35,9 +41,14 @@ async function runInkscapeSingle(params: {
   });
 }
 
-async function sanitizeWithPaper(svgContent: string): Promise<string> {
-  // Best-effort, depends on `svg-outline-stroke` package API shape.
-  // We keep this isolated and throw a user-facing error if it fails.
+function hasVisibleStroke(svgContent: string): boolean {
+  return /stroke\s*[:=]\s*["']?(?!none\b)[^"']+/i.test(svgContent);
+}
+
+async function tryOutlineStroke(
+  svgContent: string,
+  name: string
+): Promise<string | null> {
   try {
     const result = await outlineStroke(svgContent);
     if (typeof result !== 'string') {
@@ -45,18 +56,12 @@ async function sanitizeWithPaper(svgContent: string): Promise<string> {
     }
     return result;
   } catch (error) {
-    throw new CliUserError(
-      [
-        '⚠️ EXPERIMENTAL: monochrome sanitize (paper)',
-        '',
-        'The JS sanitize engine failed while running `svg-outline-stroke`.',
-        '',
-        `Details: ${error instanceof Error ? error.message : String(error)}`,
-        '',
-        'Tip: Use inkscape for best fidelity:',
-        '  --sanitize --sanitize-engine inkscape',
-      ].join('\n')
+    logger.warn(
+      `Outline-stroke failed for ${name}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
     );
+    return null;
   }
 }
 
@@ -72,10 +77,18 @@ export async function stageMonochromeSvgs(params: {
   sanitize: boolean;
   engine: SanitizeEngine;
   inkscapeBinary?: string;
+  inkscapeOutline?: boolean;
   max?: number;
-}) {
-  const { assetsFolder, stagingDir, sanitize, engine, inkscapeBinary, max } =
-    params;
+}): Promise<void> {
+  const {
+    assetsFolder,
+    stagingDir,
+    sanitize,
+    engine,
+    inkscapeBinary,
+    inkscapeOutline = false,
+    max,
+  } = params;
 
   await fs.promises.rm(stagingDir, { recursive: true, force: true });
   await fs.promises.mkdir(stagingDir, { recursive: true });
@@ -115,32 +128,70 @@ export async function stageMonochromeSvgs(params: {
     return;
   }
 
-  console.warn(
+  logger.warn(
     [
-      '⚠️ EXPERIMENTAL: monochrome sanitize is enabled.',
+      'EXPERIMENTAL: monochrome sanitize is enabled.',
       `Engine: ${engine}`,
       typeof max === 'number' ? `Max: ${max}` : '',
     ].join(' ')
   );
 
+  let processedCount = 0;
+
   if (engine === 'inkscape') {
     const inkscape = await resolveInkscapeBinary(inkscapeBinary);
+    logger.info(`Resolved Inkscape binary: ${inkscape}`);
+    if (inkscapeOutline) {
+      logger.info('Inkscape post-process outline is enabled.');
+    }
+    let outlineAppliedCount = 0;
+    let outlineAttemptedCount = 0;
     for (const [i, file] of svgFiles.entries()) {
       // Inkscape can be slow per file; emit progress so it doesn't look "stuck".
-      console.warn(`[inkscape sanitize] (${i + 1}/${svgFiles.length}) ${file}`);
+      logger.progressStep(i + 1, svgFiles.length, file);
       const inputSvg = path.join(assetsFolder, file);
       const outputSvg = path.join(stagingDir, file);
-      await runInkscapeSingle({ inkscape, inputSvg, outputSvg });
+      try {
+        await runInkscapeSingle({ inkscape, inputSvg, outputSvg });
+        if (inkscapeOutline) {
+          try {
+            const exported = await fs.promises.readFile(outputSvg, 'utf8');
+            if (hasVisibleStroke(exported)) {
+              outlineAttemptedCount += 1;
+              const outlined = await tryOutlineStroke(exported, file);
+              if (outlined) {
+                await fs.promises.writeFile(outputSvg, outlined, 'utf8');
+                outlineAppliedCount += 1;
+              }
+            }
+          } catch (error) {
+            logger.warn(
+              `Post-sanitize check failed for ${file}: ${
+                error instanceof Error ? error.message : String(error)
+              }`
+            );
+          }
+        }
+        processedCount += 1;
+      } catch (error) {
+        logger.warn(
+          `sanitize-failed: ${file} (${error instanceof Error ? error.message : String(error)})`
+        );
+      }
+    }
+    if (inkscapeOutline) {
+      logger.info(
+        `Inkscape outline summary: ${outlineAppliedCount}/${outlineAttemptedCount} applied.`
+      );
+    }
+    if (processedCount === 0) {
+      throw new CliUserError(
+        'All SVG files failed during sanitize (inkscape).'
+      );
     }
     return;
   }
 
-  // engine === 'paper'
-  for (const file of svgFiles) {
-    const inputSvg = path.join(assetsFolder, file);
-    const outputSvg = path.join(stagingDir, file);
-    const content = await fs.promises.readFile(inputSvg, 'utf8');
-    const sanitized = await sanitizeWithPaper(content);
-    await fs.promises.writeFile(outputSvg, sanitized, 'utf8');
-  }
+  // This should never happen as engine is validated to be 'inkscape' only
+  throw new CliUserError(`Unsupported sanitize engine: ${engine}`);
 }

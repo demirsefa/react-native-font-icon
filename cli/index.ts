@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { CliUserError } from './errors/CliUserError.ts';
 import { runColors } from './scripts/colors/index.ts';
 import { runMonochrome } from './scripts/monochrome/index.ts';
-import { runFallback } from './scripts/fallback/index.ts';
 
 type ColorsOptions = {
   src?: string;
@@ -11,8 +10,7 @@ type ColorsOptions = {
   python?: string;
   fontName?: string;
   max?: number;
-  sanitize?: boolean;
-  platformSubfolders?: boolean;
+  platformBasePath?: string;
 };
 
 type MonochromeOptions = {
@@ -21,14 +19,9 @@ type MonochromeOptions = {
   fontName?: string;
   max?: number;
   sanitize?: boolean;
-  sanitizeEngine?: 'inkscape' | 'paper';
+  sanitizeEngine?: 'inkscape';
   inkscape?: string;
-};
-
-type FallbackOptions = {
-  src?: string;
-  destJson?: string;
-  destComponent?: string;
+  inkscapeOutline?: boolean;
 };
 
 async function main(argv: string[]) {
@@ -67,11 +60,9 @@ async function main(argv: string[]) {
         return parsed;
       }
     )
-    .option('--sanitize', 'Sanitize SVGs before compilation', false)
     .option(
-      '--platform-subfolders',
-      'Write platform outputs into ios/android subfolders under dest',
-      false
+      '--platform-base-path <path>',
+      'Base folder for platform outputs (writes ios/android subfolders under this path)'
     )
     .action(
       async (
@@ -120,12 +111,17 @@ async function main(argv: string[]) {
     )
     .option(
       '--sanitize-engine <engine>',
-      'EXPERIMENTAL: Sanitize engine: "inkscape" (best fidelity) or "paper" (best-effort JS)',
+      'EXPERIMENTAL: Sanitize engine: "inkscape" (best fidelity)',
       'inkscape'
     )
     .option(
       '--inkscape <path>',
       'EXPERIMENTAL: Path to inkscape binary (overrides PATH/auto-detection)'
+    )
+    .option(
+      '--inkscape-outline',
+      'EXPERIMENTAL: Run a post-process outline pass after inkscape (off by default)',
+      false
     )
     .action(
       async (
@@ -145,46 +141,6 @@ async function main(argv: string[]) {
           ...options,
           src: resolvedSrc,
           dest: resolvedDest,
-        });
-      }
-    );
-
-  program
-    .command('generate:fallback')
-    .description('Generate fallback icon list + component from SVGs.')
-    .argument('[src]', 'Folder containing SVG icons')
-    .argument('[destJson]', 'Destination JSON file for fallback icon names')
-    .argument(
-      '[destComponent]',
-      'Destination TSX file for FallBackIcon component'
-    )
-    .option('-s, --src <path>', 'Folder containing SVG icons')
-    .option(
-      '--dest-json <path>',
-      'Destination JSON file for fallback icon names'
-    )
-    .option(
-      '--dest-component <path>',
-      'Destination TSX file for FallBackIcon component'
-    )
-    .action(
-      async (
-        src: string | undefined,
-        destJson: string | undefined,
-        destComponent: string | undefined,
-        options: FallbackOptions
-      ) => {
-        const resolvedJson = options.destJson ?? destJson;
-        const resolvedComponent = options.destComponent ?? destComponent;
-        if (!resolvedJson || !resolvedComponent) {
-          throw new Error(
-            'Both destJson and destComponent are required. Provide positional arguments or --dest-json/--dest-component.'
-          );
-        }
-        await runFallback({
-          src: options.src ?? src,
-          destJson: resolvedJson,
-          destComponent: resolvedComponent,
         });
       }
     );

@@ -7,82 +7,70 @@
         {
           "id": "font",
           "label": "font",
-          "nextStep": "fontFamily"
+          "next": "fontFamily"
         },
         {
           "id": "svg",
           "label": "svg",
-          "nextStep": "svgType"
+          "next": "svgType"
         }
       ]
     },
     {
       "id": "fontFamily",
       "title": "2. Font Family Selection",
-      "dependsOn": {
-        "step": "type",
-        "value": "font"
-      },
       "options": [
         {
           "id": "custom-font-monochrome-inkscape",
           "label": "custom-font-monochrome-inkscape",
-          "nextType": "fontFamilyMode"
-        },
-        {
-          "id": "custom-font-monochrome-paper",
-          "label": "custom-font-monochrome-paper",
-          "nextType": "fontFamilyMode"
+          "next": "count"
         },
         {
           "id": "custom-font-monochrome",
           "label": "custom-font-monochrome",
-          "nextType": "fontFamilyMode"
+          "next": "count"
         },
         {
           "id": "custom-font-colors",
           "label": "custom-font-colors",
-          "nextType": "fontFamilyMode"
-        }
-      ]
-    },
-    {
-      "id": "fontFamilyMode",
-      "title": "3. Font Family Mode",
-      "dependsOn": {
-        "step": "fontFamily",
-        "value": "*"
-      },
-      "options": [
-        {
-          "id": "raw",
-          "label": "raw",
-          "nextType": "start"
-        },
-        {
-          "id": "fallback",
-          "label": "fallback",
-          "nextType": "start"
+          "next": "count"
         }
       ]
     },
     {
       "id": "svgType",
       "title": "2. SVG Type Selection",
-      "dependsOn": {
-        "step": "type",
-        "value": "svg"
-      },
       "options": [
         {
           "id": "icons",
           "label": "icons",
-          "nextType": "start"
+          "next": "count"
         },
         {
           "id": "color-icons",
           "label": "color-icons",
-          "nextType": "start"
+          "next": "count"
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "title": "3. Count Selection",
+      "options": [
+        {
+          "id": "100",
+          "label": "100",
+          "next": "ready"
+        },
+        {
+          "id": "500",
+          "label": "500",
+          "next": "ready"
+        },
+        {
+          "id": "1000",
+          "label": "1000",
+          "next": "ready"
         }
       ]
     }

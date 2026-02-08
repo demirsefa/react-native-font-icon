@@ -12,6 +12,7 @@ import {
 import { pathExists } from '../../scripts-utils/fs/pathExists.ts';
 import { resolvePythonBinary } from '../../../python-utils/node/resolvePythonBinary.ts';
 import { CliUserError } from '../../errors/CliUserError.ts';
+import { createLogger } from '../../scripts-utils/logger.ts';
 import { collectSvgFiles } from './svg/collectSvgFiles.ts';
 import { stageSvgFiles } from './svg/stageSvgFiles.ts';
 import { createConfigFiles } from './config/createConfigFiles.ts';
@@ -23,6 +24,7 @@ import { sha256FileUtf8IfExists } from '../../scripts-utils/hash/sha256FileIfExi
 import { setColorsStorage } from './storage/setStorage.ts';
 
 const execFileAsync = promisify(execFile);
+const logger = createLogger('colors');
 
 async function assertResvgAvailable(python: string) {
   try {
@@ -44,9 +46,9 @@ async function assertResvgAvailable(python: string) {
         const resvgPath = path.join(userBin, 'resvg');
         await execFileAsync(resvgPath, ['--version']);
         process.env.PATH = `${userBin}${path.delimiter}${process.env.PATH ?? ''}`;
-        console.warn(
+        logger.warn(
           [
-            '⚠️ `resvg` was not found on PATH, but was found via Python user install.',
+            '`resvg` was not found on PATH, but was found via Python user install.',
             `Using: ${resvgPath}`,
             'Tip: to avoid this warning, add it to your shell PATH:',
             `  export PATH="${userBin}:$PATH"`,
@@ -60,7 +62,7 @@ async function assertResvgAvailable(python: string) {
 
     throw new CliUserError(
       [
-        '❌ Missing dependency: `resvg`',
+        'Missing dependency: `resvg`',
         '',
         'Color font generation uses nanoemoji, which requires the `resvg` executable on your PATH.',
         'This dependency is required; font generation cannot continue without it.',
@@ -87,8 +89,7 @@ export async function generateColorFonts(params: {
   pythonBinary?: string;
   fontName?: string;
   max?: number;
-  sanitize?: boolean;
-  platformSubfolders?: boolean;
+  platformBasePath?: string;
 }) {
   const {
     assetsFolder,
@@ -96,45 +97,78 @@ export async function generateColorFonts(params: {
     pythonBinary,
     fontName = DEFAULT_FONT_NAME,
     max,
-    sanitize,
-    platformSubfolders,
+    platformBasePath,
   } = params;
+  logger.info(
+    `Output folder: ${outputFolder} (platformBasePath=${platformBasePath ?? 'n/a'})`
+  );
 
   if (!(await pathExists(assetsFolder))) {
     throw new Error(`Assets folder does not exist: ${assetsFolder}`);
   }
 
+  logger.step(`Collecting SVG files from: ${assetsFolder}`);
   const svgFilesAll = await collectSvgFiles(assetsFolder);
   if (svgFilesAll.length === 0) {
     throw new Error(`No SVG files found under ${assetsFolder}`);
   }
   const svgFiles =
     typeof max === 'number' ? svgFilesAll.slice(0, max) : svgFilesAll;
+  logger.success(
+    `Found ${svgFilesAll.length} SVG files (processing ${svgFiles.length}${typeof max === 'number' ? `, limited by --max ${max}` : ''})`
+  );
 
+  logger.step('Resolving Python binary...');
   const python = await resolvePythonBinary(pythonBinary);
+  logger.success(`Using Python: ${python}`);
+  logger.step('Checking resvg availability...');
   await assertResvgAvailable(python);
+  logger.success('resvg is available');
+
+  logger.step('Creating temporary work directory...');
   const workDir = await fs.promises.mkdtemp(
     path.join(os.tmpdir(), 'rn-font-icon-colors-')
   );
   const configDir = path.join(workDir, CONFIG_FOLDER_NAME);
   await fs.promises.mkdir(configDir, { recursive: true });
   const stagingDir = path.join(configDir, STAGING_FOLDER_NAME);
+
+  logger.step(
+    `Staging ${svgFiles.length} SVG file${svgFiles.length !== 1 ? 's' : ''}...`
+  );
   const { stagedRelativePaths, glyphMappings } = await stageSvgFiles(
     svgFiles,
     stagingDir,
-    configDir,
-    { sanitize, pythonBinary: python }
+    configDir
   );
+  const skippedCount = svgFiles.length - stagedRelativePaths.length;
+  if (skippedCount > 0) {
+    logger.success(
+      `Staged ${stagedRelativePaths.length} SVG file${stagedRelativePaths.length !== 1 ? 's' : ''} (${skippedCount} skipped)`
+    );
+  } else {
+    logger.success(
+      `Staged ${stagedRelativePaths.length} SVG file${stagedRelativePaths.length !== 1 ? 's' : ''}`
+    );
+  }
+
+  logger.step('Creating config files...');
   const configs = await createConfigFiles({
     configDir,
     outputFolder,
     fontName,
     relativeSrcs: stagedRelativePaths,
-    platformSubfolders,
+    platformBasePath,
   });
+  logger.success(`Created ${configs.length} config file(s)`);
+  for (const config of configs) {
+    logger.info(`Config ${config.label}: ${config.outputFile}`);
+  }
 
   try {
+    logger.step('Running nanoemoji to generate fonts...');
     await runNanoemoji(python, configDir, configs);
+    logger.success('Font generation completed');
 
     // Verify outputs exist and shape the return payload similar to previous version.
     const outputs: Array<{ platform: 'android' | 'ios'; path: string }> = [];
@@ -150,12 +184,15 @@ export async function generateColorFonts(params: {
       });
     }
 
+    logger.step('Writing glyph metadata...');
     const glyphMapPath = await writeGlyphMetadata({
       glyphMappings,
       outputFolder,
       fontName,
     });
+    logger.success(`Glyph metadata written to: ${glyphMapPath}`);
 
+    logger.step('Calculating hashes and updating storage...');
     const [glyphMapHash, folderLastChangeDate] = await Promise.all([
       sha256FileUtf8IfExists(glyphMapPath),
       getFolderMtimeIso(assetsFolder),
@@ -167,7 +204,9 @@ export async function generateColorFonts(params: {
       fontName,
       outputs,
     });
+    logger.success('Storage updated');
 
+    logger.success('Font generation successful!');
     return {
       generated: true,
       pythonBinary: python,
@@ -175,7 +214,9 @@ export async function generateColorFonts(params: {
       outputs,
     };
   } finally {
+    logger.step('Cleaning up temporary files...');
     await cleanup(configs, stagingDir);
     await fs.promises.rm(workDir, { recursive: true, force: true });
+    logger.success('Cleanup completed');
   }
 }

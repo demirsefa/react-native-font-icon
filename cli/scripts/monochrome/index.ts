@@ -11,6 +11,22 @@ import { setStorage } from './storage/setStorage.ts';
 import { stageMonochromeSvgs } from './sanitize/sanitizeMonochromeSvgs.ts';
 import { CliUserError } from '../../errors/CliUserError.ts';
 
+async function listSvgPaths(assetsFolder: string, max?: number) {
+  const entries = await fs.promises.readdir(assetsFolder, {
+    withFileTypes: true,
+  });
+  const svgFilesAll = entries
+    .filter((e) => e.isFile() && e.name.toLowerCase().endsWith('.svg'))
+    .map((e) => e.name)
+    .sort((a, b) => a.localeCompare(b));
+  const svgFiles =
+    typeof max === 'number' ? svgFilesAll.slice(0, max) : svgFilesAll;
+  if (svgFiles.length === 0) {
+    throw new CliUserError(`No SVG files found under: ${assetsFolder}`);
+  }
+  return svgFiles.map((file) => path.join(assetsFolder, file));
+}
+
 export async function runMonochrome(params: MonochromeParams) {
   // src/dest are validated at CLI command layer (cli/index.ts)
   const assetsFolder = path.isAbsolute(params.src)
@@ -25,11 +41,11 @@ export async function runMonochrome(params: MonochromeParams) {
 
   const sanitize = Boolean(params.sanitize);
   const engine = params.sanitizeEngine ?? 'inkscape';
-  if (engine !== 'inkscape' && engine !== 'paper') {
+  if (engine !== 'inkscape') {
     throw new CliUserError(
       `Invalid --sanitize-engine value: ${String(
         params.sanitizeEngine
-      )}. Expected "inkscape" or "paper".`
+      )}. Expected "inkscape".`
     );
   }
 
@@ -48,9 +64,12 @@ export async function runMonochrome(params: MonochromeParams) {
         sanitize: true,
         engine,
         inkscapeBinary: params.inkscape,
+        inkscapeOutline: params.inkscapeOutline,
         max: maxIcons,
       });
       compilationSrc = stagingDir;
+    } else {
+      await listSvgPaths(assetsFolder, maxIcons);
     }
 
     await generateFontFamily(compilationSrc, outputFolder, fontName, {

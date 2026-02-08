@@ -5,23 +5,19 @@ import { PUA_END, PUA_START } from '../constants.ts';
 import type { GlyphMapping } from '../types.ts';
 import { normalizeSvgContent } from './normalizeSvgContent.ts';
 import { shouldSkipSvg } from './shouldSkipSvg.ts';
-import { sanitizeSvgWithDefaultAdapter } from '../sanitize/default-adapter.ts';
-
-export type StageSvgOptions = {
-  sanitize?: boolean;
-  pythonBinary?: string;
-};
+import { createLogger } from '../../../scripts-utils/logger.ts';
 
 export type StageSvgResult = {
   stagedRelativePaths: string[];
   glyphMappings: GlyphMapping[];
 };
 
+const logger = createLogger('colors:stage');
+
 export async function stageSvgFiles(
   svgFiles: string[],
   stagingDir: string,
-  configDir: string,
-  options: StageSvgOptions = {}
+  configDir: string
 ): Promise<StageSvgResult> {
   await fs.promises.rm(stagingDir, { recursive: true, force: true });
   await fs.promises.mkdir(stagingDir, { recursive: true });
@@ -30,22 +26,28 @@ export async function stageSvgFiles(
   const glyphMappings: GlyphMapping[] = [];
 
   let processedCount = 0;
+  let skippedCount = 0;
+  const totalFiles = svgFiles.length;
 
-  for (const svgPath of svgFiles) {
+  for (const [i, svgPath] of svgFiles.entries()) {
     const parsed = path.parse(svgPath);
-    let content = await fs.promises.readFile(svgPath, 'utf8');
 
-    if (shouldSkipSvg(content)) {
-      console.warn(
-        `Skipping ${parsed.base} because it uses clipPath references unsupported gradients.`
+    logger.progressStep(i + 1, totalFiles, parsed.base);
+
+    let content: string;
+    try {
+      content = await fs.promises.readFile(svgPath, 'utf8');
+    } catch (error) {
+      logger.warn(
+        `Skipping ${parsed.base}: read failed (${error instanceof Error ? error.message : String(error)})`
       );
       continue;
     }
 
-    if (options.sanitize) {
-      content = await sanitizeSvgWithDefaultAdapter(content, {
-        pythonBinary: options.pythonBinary,
-      });
+    if (shouldSkipSvg(content)) {
+      skippedCount++;
+      logger.warn(`Skipping ${parsed.base}: unsupported SVG features`);
+      continue;
     }
 
     processedCount += 1;
@@ -76,6 +78,12 @@ export async function stageSvgFiles(
   if (processedCount === 0) {
     throw new Error(
       'All SVG files were skipped due to unsupported clip paths or gradients.'
+    );
+  }
+
+  if (skippedCount > 0) {
+    logger.warn(
+      `Skipped ${skippedCount} SVG file${skippedCount !== 1 ? 's' : ''} due to unsupported features.`
     );
   }
 

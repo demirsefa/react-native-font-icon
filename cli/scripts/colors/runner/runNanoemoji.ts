@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import type { GeneratedConfig } from '../types.ts';
 import { spawnPythonModule } from '../../../../python-utils/node/spawnPythonModule.ts';
+import { createLogger } from '../../../scripts-utils/logger.ts';
 
 /**
  * Run nanoemoji using config TOML files.
@@ -10,6 +11,8 @@ import { spawnPythonModule } from '../../../../python-utils/node/spawnPythonModu
  * We run via `python -m nanoemoji.nanoemoji` to avoid depending on a separate
  * `nanoemoji` executable being present on PATH.
  */
+const logger = createLogger('colors:nanoemoji');
+
 export async function runNanoemoji(
   pythonBinary: string,
   configDir: string,
@@ -24,7 +27,12 @@ export async function runNanoemoji(
   //
   // To keep the font family stable across platforms while avoiding collisions,
   // run nanoemoji once per config and start from a clean build folder each time.
-  for (const config of configs) {
+  for (let i = 0; i < configs.length; i++) {
+    const config = configs[i]!;
+    logger.progress(
+      `Running nanoemoji for ${config.label} (${i + 1}/${configs.length})...`
+    );
+
     await fs.promises.rm(path.join(configDir, 'build'), {
       recursive: true,
       force: true,
@@ -40,5 +48,7 @@ export async function runNanoemoji(
       args: [configArg],
       cwd: configDir,
     });
+
+    logger.success(`Completed ${config.label}`);
   }
 }
