@@ -1,5 +1,5 @@
-import { STORAGE_FILE } from '../constants.ts';
-import { resolveFromImportMeta } from '../../../scripts-utils/path/resolveFromImportMeta.ts';
+import { STORAGE_FILE } from '../constants.js';
+import { resolveFromImportMeta } from '../../../scripts-utils/path/resolveFromImportMeta.js';
 
 export function getStoragePath(): string {
   // cli/scripts/monochrome/storage -> cli/scripts/monochrome

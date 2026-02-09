@@ -4,8 +4,8 @@ import { promisify } from 'node:util';
 import { execFile } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
-import { resolvePythonBinary } from '../../../../python-utils/node/resolvePythonBinary.ts';
-import { pathExists } from '../../../scripts-utils/fs/pathExists.ts';
+import { resolvePythonBinary } from '../../../../python-utils/node/resolvePythonBinary.js';
+import { pathExists } from '../../../scripts-utils/fs/pathExists.js';
 
 const execFileAsync = promisify(execFile);
 

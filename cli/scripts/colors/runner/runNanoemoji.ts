@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import type { GeneratedConfig } from '../types.ts';
-import { spawnPythonModule } from '../../../../python-utils/node/spawnPythonModule.ts';
-import { createLogger } from '../../../scripts-utils/logger.ts';
+import type { GeneratedConfig } from '../types.js';
+import { spawnPythonModule } from '../../../../python-utils/node/spawnPythonModule.js';
+import { createLogger } from '../../../scripts-utils/logger.js';
 
 /**
  * Run nanoemoji using config TOML files.

@@ -4,7 +4,7 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
-import { CliUserError } from '../../../errors/CliUserError.ts';
+import { CliUserError } from '../../../errors/CliUserError.js';
 
 const execFileAsync = promisify(execFile);
 

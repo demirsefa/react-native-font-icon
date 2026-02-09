@@ -1,8 +1,8 @@
 ## svg/
 
-Bu klasör; SVG discovery + pre-processing + staging adımlarını içerir.
+This folder contains the SVG discovery, pre-processing, and staging steps.
 
-- `collectSvgFiles`: recursive SVG toplama
-- `shouldSkipSvg`: unsupported pattern erken eleme
-- `normalizeSvgContent`: xlink/href normalize
-- `stageSvgFiles`: codepoint mapping + staging write (sanitize hook burada)
+- `collectSvgFiles`: recursively collects SVG files
+- `shouldSkipSvg`: early filter for unsupported patterns
+- `normalizeSvgContent`: normalizes `xlink:href` / `href` usage
+- `stageSvgFiles`: assigns codepoints + writes staged SVGs (sanitize hook lives here)

@@ -1,6 +1,6 @@
-import type { ColorsStorageShape } from '../types.ts';
-import { writeJsonFile } from '../../../scripts-utils/json/writeJsonFile.ts';
-import { getColorsStoragePath } from './storageFile.ts';
+import type { ColorsStorageShape } from '../types.js';
+import { writeJsonFile } from '../../../scripts-utils/json/writeJsonFile.js';
+import { getColorsStoragePath } from './storageFile.js';
 
 export async function setColorsStorage(
   storage: ColorsStorageShape

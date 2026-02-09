@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-import { START_CODEPOINT } from '../constants.ts';
+import { START_CODEPOINT } from '../constants.js';
 import svgtofont from 'svgtofont';
 
 export async function generateFontFamily(

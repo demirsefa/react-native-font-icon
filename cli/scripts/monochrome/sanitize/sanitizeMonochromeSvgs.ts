@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 
-import { CliUserError } from '../../../errors/CliUserError.ts';
-import { resolveInkscapeBinary } from './resolveInkscapeBinary.ts';
-import { createLogger } from '../../../scripts-utils/logger.ts';
+import { CliUserError } from '../../../errors/CliUserError.js';
+import { resolveInkscapeBinary } from './resolveInkscapeBinary.js';
+import { createLogger } from '../../../scripts-utils/logger.js';
 
 export type SanitizeEngine = 'inkscape';
 

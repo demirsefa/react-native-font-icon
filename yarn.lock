@@ -12235,7 +12235,7 @@ __metadata:
     react: "*"
     react-native: "*"
   bin:
-    generate: ./cli/index.ts
+    generate: ./cli/dist/cli/index.js
   languageName: unknown
   linkType: soft
 
