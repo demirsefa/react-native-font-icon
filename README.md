@@ -20,8 +20,7 @@ Generate icon fonts (TTF) from SVG files for React Native, then render icons as 
 - [Benchmarks](#benchmarks)
 - [Limitations & compatibility](#limitations--compatibility)
 - [Roadmap / TODO](#roadmap--todo)
-- [Credits](#credits)
-- [Contributing](#contributing)
+- [Contributing & credits](#contributing--credits)
 - [License](#license)
 
 ---
@@ -414,20 +413,20 @@ Contributions are welcome! Feel free to [open a pull request](../../pulls) if yo
 
 ---
 
-## Credits
-
-The example app uses the following icon packs **for demonstration purposes only** (not intended for commercial use):
-
-- [SVG Owl — Halloween Scary Vectors](https://svgowl.com/packs/halloween-scary-vectors)
-- [SVG Owl — Winter Town Filled Vectors](https://svgowl.com/packs/winter-town-filled-vectors)
-
----
-
-## Contributing
+## Contributing & credits
 
 - [Development workflow](CONTRIBUTING.md#development-workflow)
 - [Sending a pull request](CONTRIBUTING.md#sending-a-pull-request)
 - [Code of conduct](CODE_OF_CONDUCT.md)
+
+**Example app icon packs** (for demonstration only, not for commercial use):
+
+- [Iconoir](https://iconoir.com/) — monochrome icons
+- [Figma community pack](https://www.figma.com/community/file/1408745753751328569) — additional monochrome icons
+- [Flowbite Icons](https://flowbite.com/icons/) — colorful icons
+- [SVG Owl — Halloween Scary Vectors](https://svgowl.com/packs/halloween-scary-vectors)
+- [SVG Owl — Winter Town Filled Vectors](https://svgowl.com/packs/winter-town-filled-vectors)
+- [Streamline HQ](https://www.streamlinehq.com/) — potential future source for solid icons
 
 ## License
 
