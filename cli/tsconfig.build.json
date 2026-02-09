@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.cli.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "inlineSources": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "..",
+    "outDir": "./dist",
+    "allowImportingTsExtensions": false
+  },
+  "include": ["./**/*.ts", "./**/*.d.ts", "../python-utils/**/*.ts"]
+}

@@ -5,7 +5,7 @@
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "bin": {
-    "generate": "./cli/index.ts"
+    "generate": "./cli/dist/cli/index.js"
   },
   "exports": {
     ".": {
@@ -36,9 +36,10 @@
     "!**/.*"
   ],
   "scripts": {
-    "generate:colors:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --platform-base-path ./example/src/assets/fonts --font-name custom-font-colors --max 1000",
-    "generate:monochrome:example": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1000",
-    "generate:monochrome:example:sanitize:inkscape": "node --disable-warning=ExperimentalWarning ./cli/index.ts generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1000",
+    "build:cli": "tsc -p ./cli/tsconfig.build.json",
+    "generate:colors:example": "yarn generate generate:colors --src ./example/src/assets/color-icons --dest ./example/src/assets/fonts/common --platform-base-path ./example/src/assets/fonts --font-name custom-font-colors --max 1000",
+    "generate:monochrome:example": "yarn generate generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome --max 1000",
+    "generate:monochrome:example:sanitize:inkscape": "yarn generate generate:monochrome --src ./example/src/assets/icons --dest ./example/src/assets/fonts/common --font-name custom-font-monochrome-inkscape --sanitize --sanitize-engine inkscape --max 1000",
     "example:fonts": "cd example && npx react-native-asset",
     "example:fonts:reset": "cd example && rm -f ios/link-assets-manifest.json android/link-assets-manifest.json",
     "test": "jest",
@@ -47,7 +48,7 @@
     "validate": "yarn lint && prettier --check . --ignore-path .gitignore",
     "validate:write": "yarn lint --fix && prettier --write . --ignore-path .gitignore",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
+    "prepare": "bob build && yarn build:cli",
     "release": "release-it --only-version"
   },
   "keywords": [

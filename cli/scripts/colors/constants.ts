@@ -1,4 +1,4 @@
-import type { ColorTarget } from './types.ts';
+import type { ColorTarget } from './types.js';
 
 export const DEFAULT_FONT_NAME = 'font-family';
 

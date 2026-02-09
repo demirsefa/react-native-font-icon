@@ -1,7 +1,7 @@
 ## sanitize/
 
-Şimdilik tek sanitize implementasyonu vardır: `default-adapter`.
+Currently there is a single sanitize implementation: `default-adapter`.
 
-Kullanıcı özelleştirmek isterse `yarn patch` ile `default-adapter`'ı değiştirir.
+If a consumer wants to customize it, they can modify `default-adapter` via `yarn patch`.
 
-> Policy: CLI pip install koşturmaz. Dependency eksikse sadece uyarı + kurulum komutu gösterir.
+> Policy: the CLI never runs `pip install` automatically. If dependencies are missing, it only prints a warning and shows the install command.

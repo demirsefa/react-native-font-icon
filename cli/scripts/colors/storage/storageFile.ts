@@ -1,4 +1,4 @@
-import { resolveFromImportMeta } from '../../../scripts-utils/path/resolveFromImportMeta.ts';
+import { resolveFromImportMeta } from '../../../scripts-utils/path/resolveFromImportMeta.js';
 
 export function getColorsStoragePath(): string {
   // cli/scripts/colors/storage -> cli/scripts/colors

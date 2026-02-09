@@ -1,7 +1,7 @@
 import path from 'node:path';
 
-import type { ColorsParams } from './types.ts';
-import { generateColorFonts } from './generateColorFonts.ts';
+import type { ColorsParams } from './types.js';
+import { generateColorFonts } from './generateColorFonts.js';
 /**
  * CLI entrypoint for `generate:colors`.
  */

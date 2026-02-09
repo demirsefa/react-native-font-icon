@@ -8,20 +8,20 @@ import {
   CONFIG_FOLDER_NAME,
   DEFAULT_FONT_NAME,
   STAGING_FOLDER_NAME,
-} from './constants.ts';
-import { pathExists } from '../../scripts-utils/fs/pathExists.ts';
-import { resolvePythonBinary } from '../../../python-utils/node/resolvePythonBinary.ts';
-import { CliUserError } from '../../errors/CliUserError.ts';
-import { createLogger } from '../../scripts-utils/logger.ts';
-import { collectSvgFiles } from './svg/collectSvgFiles.ts';
-import { stageSvgFiles } from './svg/stageSvgFiles.ts';
-import { createConfigFiles } from './config/createConfigFiles.ts';
-import { runNanoemoji } from './runner/runNanoemoji.ts';
-import { writeGlyphMetadata } from './output/writeGlyphMetadata.ts';
-import { cleanup } from './output/cleanup.ts';
-import { getFolderMtimeIso } from '../../scripts-utils/fs/getFolderMtimeIso.ts';
-import { sha256FileUtf8IfExists } from '../../scripts-utils/hash/sha256FileIfExists.ts';
-import { setColorsStorage } from './storage/setStorage.ts';
+} from './constants.js';
+import { pathExists } from '../../scripts-utils/fs/pathExists.js';
+import { resolvePythonBinary } from '../../../python-utils/node/resolvePythonBinary.js';
+import { CliUserError } from '../../errors/CliUserError.js';
+import { createLogger } from '../../scripts-utils/logger.js';
+import { collectSvgFiles } from './svg/collectSvgFiles.js';
+import { stageSvgFiles } from './svg/stageSvgFiles.js';
+import { createConfigFiles } from './config/createConfigFiles.js';
+import { runNanoemoji } from './runner/runNanoemoji.js';
+import { writeGlyphMetadata } from './output/writeGlyphMetadata.js';
+import { cleanup } from './output/cleanup.js';
+import { getFolderMtimeIso } from '../../scripts-utils/fs/getFolderMtimeIso.js';
+import { sha256FileUtf8IfExists } from '../../scripts-utils/hash/sha256FileIfExists.js';
+import { setColorsStorage } from './storage/setStorage.js';
 
 const execFileAsync = promisify(execFile);
 const logger = createLogger('colors');

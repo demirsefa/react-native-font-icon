@@ -1,3 +1,3 @@
 ## config/
 
-Bu klasör; color-fonts build.py için TOML config üretimini içerir.
+This folder contains TOML config generation for nanoemoji / color-font builds.

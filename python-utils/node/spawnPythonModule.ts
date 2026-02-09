@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import { spawnWithLogs } from './spawnWithLogs.ts';
+import { spawnWithLogs } from './spawnWithLogs.js';
 
 /**
  * Spawn: python -m <module> ...args

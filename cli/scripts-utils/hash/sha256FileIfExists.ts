@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { sha256FileUtf8 } from './sha256File.ts';
+import { sha256FileUtf8 } from './sha256File.js';
 
 export async function sha256FileUtf8IfExists(
   filePath: string

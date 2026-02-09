@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { DEFAULT_FONT_NAME } from '../constants.ts';
+import { DEFAULT_FONT_NAME } from '../constants.js';
 
 export function normalizeFontName(
   fontName: string | undefined,

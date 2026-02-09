@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import type { GeneratedConfig } from '../types.ts';
+import type { GeneratedConfig } from '../types.js';
 
 export async function cleanup(
   configs: GeneratedConfig[],

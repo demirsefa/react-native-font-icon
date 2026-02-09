@@ -1,8 +1,8 @@
 import path from 'node:path';
 
-import { DEFAULT_FONT_NAME } from '../constants.ts';
-import { normalizeFontName } from '../utils/normalizeFontName.ts';
-import { sha256FileUtf8IfExists } from '../../../scripts-utils/hash/sha256FileIfExists.ts';
+import { DEFAULT_FONT_NAME } from '../constants.js';
+import { normalizeFontName } from '../utils/normalizeFontName.js';
+import { sha256FileUtf8IfExists } from '../../../scripts-utils/hash/sha256FileIfExists.js';
 
 export async function getFontFamilyHash(
   outputFolder: string,

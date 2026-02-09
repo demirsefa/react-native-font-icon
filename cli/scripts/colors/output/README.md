@@ -1,3 +1,3 @@
 ## output/
 
-Bu klasör; üretilen fontların output klasörüne kopyalanması ve glyph metadata yazımını içerir.
+This folder contains logic for writing generated outputs (fonts and glyph metadata) to the destination folder.

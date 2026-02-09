@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import type { GlyphMapping } from '../types.ts';
+import type { GlyphMapping } from '../types.js';
 
 export async function writeGlyphMetadata(params: {
   glyphMappings: GlyphMapping[];

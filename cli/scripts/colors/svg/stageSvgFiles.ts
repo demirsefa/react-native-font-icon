@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { PUA_END, PUA_START } from '../constants.ts';
-import type { GlyphMapping } from '../types.ts';
-import { normalizeSvgContent } from './normalizeSvgContent.ts';
-import { shouldSkipSvg } from './shouldSkipSvg.ts';
-import { createLogger } from '../../../scripts-utils/logger.ts';
+import { PUA_END, PUA_START } from '../constants.js';
+import type { GlyphMapping } from '../types.js';
+import { normalizeSvgContent } from './normalizeSvgContent.js';
+import { shouldSkipSvg } from './shouldSkipSvg.js';
+import { createLogger } from '../../../scripts-utils/logger.js';
 
 export type StageSvgResult = {
   stagedRelativePaths: string[];

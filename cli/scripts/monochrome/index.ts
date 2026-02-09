@@ -2,14 +2,14 @@ import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
 
-import type { MonochromeParams } from './types.ts';
-import { generateFontFamily } from './generator/generateFontFamily.ts';
-import { createFontName } from './utils/createFontName.ts';
-import { getFolderMtimeIso } from '../../scripts-utils/fs/getFolderMtimeIso.ts';
-import { getFontFamilyHash } from './storage/getFontFamilyHash.ts';
-import { setStorage } from './storage/setStorage.ts';
-import { stageMonochromeSvgs } from './sanitize/sanitizeMonochromeSvgs.ts';
-import { CliUserError } from '../../errors/CliUserError.ts';
+import type { MonochromeParams } from './types.js';
+import { generateFontFamily } from './generator/generateFontFamily.js';
+import { createFontName } from './utils/createFontName.js';
+import { getFolderMtimeIso } from '../../scripts-utils/fs/getFolderMtimeIso.js';
+import { getFontFamilyHash } from './storage/getFontFamilyHash.js';
+import { setStorage } from './storage/setStorage.js';
+import { stageMonochromeSvgs } from './sanitize/sanitizeMonochromeSvgs.js';
+import { CliUserError } from '../../errors/CliUserError.js';
 
 async function listSvgPaths(assetsFolder: string, max?: number) {
   const entries = await fs.promises.readdir(assetsFolder, {

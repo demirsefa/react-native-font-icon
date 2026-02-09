@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { CliUserError } from './errors/CliUserError.ts';
-import { runColors } from './scripts/colors/index.ts';
-import { runMonochrome } from './scripts/monochrome/index.ts';
+import { CliUserError } from './errors/CliUserError.js';
+import { runColors } from './scripts/colors/index.js';
+import { runMonochrome } from './scripts/monochrome/index.js';
 
 type ColorsOptions = {
   src?: string;

@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { COLOR_TARGETS } from '../constants.ts';
-import type { GeneratedConfig } from '../types.ts';
-import { buildConfigContent } from './buildConfigContent.ts';
+import { COLOR_TARGETS } from '../constants.js';
+import type { GeneratedConfig } from '../types.js';
+import { buildConfigContent } from './buildConfigContent.js';
 
 export async function createConfigFiles(params: {
   configDir: string;
