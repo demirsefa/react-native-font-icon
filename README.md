@@ -17,8 +17,10 @@ Generate icon fonts (TTF) from SVG files for React Native, then render icons as 
   - [Icon](#icon)
   - [useGetAllIcons](#usegetallicons)
   - [useFontIconContext](#usefonticoncontext)
-  - [TypeScript types](#typescript-types)
+- [Benchmarks](#benchmarks)
 - [Limitations & compatibility](#limitations--compatibility)
+- [Roadmap / TODO](#roadmap--todo)
+- [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -27,6 +29,8 @@ Generate icon fonts (TTF) from SVG files for React Native, then render icons as 
 ## What this library does
 
 This project focuses on **SVG → font** generation and a small runtime API to render the result. It is **not** aiming to support every possible SVG feature.
+
+> **Blog post:** [I Built an Icon Font Library for React Native — Here's What I Learned](https://medium.com/@demir.h.sefa/i-built-an-icon-font-library-for-react-native-heres-what-i-learned-3e20a0e7cfcd) — motivation, approach, and real-world benchmark results.
 
 | Icon type | Status | CLI command |
 |---|---|---|
@@ -75,20 +79,6 @@ npx --package react-native-font-icon generate generate:monochrome \
 |---|---|
 | `<dest>/<font-name>.ttf` | The generated monochrome font |
 | `<dest>/<font-name>.json` | Glyph map (`{ "icon-name": <codepoint>, ... }`) |
-
-**Example:**
-
-```sh
-npx --package react-native-font-icon generate generate:monochrome \
-  --src ./svg-icons \
-  --dest ./src/assets/fonts/common \
-  --font-name app-icons \
-  --max 500
-```
-
-This produces:
-- `./src/assets/fonts/common/app-icons.ttf`
-- `./src/assets/fonts/common/app-icons.json`
 
 ---
 
@@ -153,11 +143,6 @@ npx --package react-native-font-icon generate generate:colors \
 | `<dest>/<font-name>-glyphmap.json` | Shared glyph map |
 | `<platform-base-path>/ios/<font-name>.ttf` | iOS color font (SBIX) |
 | `<platform-base-path>/android/<font-name>.ttf` | Android color font (COLR) |
-
-**Example output:**
-- `./src/assets/fonts/common/my-color-icons-glyphmap.json`
-- `./src/assets/fonts/ios/my-color-icons.ttf`
-- `./src/assets/fonts/android/my-color-icons.ttf`
 
 > The color pipeline automatically skips some unsupported SVG patterns (e.g. certain `clipPath` + `gradient` combinations).
 
@@ -320,22 +305,6 @@ Renders a single icon. It is a wrapper around React Native's `<Text>` component,
 - If `name` is not found in the glyph map, `Icon` **throws** an error.
 - If no family is resolved, it renders a fallback "X" character.
 
-**Examples:**
-
-```tsx
-{/* Basic usage */}
-<Icon name="home" />
-
-{/* Explicit family */}
-<Icon name="settings" family="app-icons" />
-
-{/* Custom styling */}
-<Icon name="star" style={{ fontSize: 48, color: 'gold' }} />
-
-{/* With TextProps like onPress */}
-<Icon name="menu" onPress={() => console.log('pressed')} />
-```
-
 ---
 
 ### `useGetAllIcons`
@@ -395,25 +364,33 @@ function DebugInfo() {
 
 ---
 
-### TypeScript types
+## Benchmarks
 
-All types are exported from the package:
+Rendering performance measured in the example app (ScrollView grid). **Font** = this library's `<Icon>` component (renders via `<Text>`). **SVG** = same icons rendered with `react-native-svg`.
 
-```ts
-import type {
-  FontDataEntry,
-  FontGlyphCollection,
-  FontIconContextType,
-  IconProviderProps,
-} from 'react-native-font-icon';
-```
+### iOS
 
-| Type | Description |
-|---|---|
-| `FontDataEntry` | `{ family: string; glyphMap: Record<string, number> }` |
-| `FontGlyphCollection` | `ReadonlyArray<FontDataEntry> \| Record<string, FontDataEntry>` |
-| `FontIconContextType` | Shape returned by `useFontIconContext` |
-| `IconProviderProps` | Props for `IconProvider` |
+| Type | Icons | Font (ms) | SVG (ms) | Speedup |
+|---|---|---|---|---|
+| Monochrome | 100 | 39.49 | 89.91 | **2.3x** |
+| Monochrome | 500 | 201.82 | 460.28 | **2.3x** |
+| Monochrome | 1000 | 444.93 | 914.80 | **2.1x** |
+| Color | 100 | 41.40 | 238.44 | **5.8x** |
+| Color | 500 | 203.41 | 1,151.28 | **5.7x** |
+| Color | 1000 | 404.22 | 2,319.80 | **5.7x** |
+
+#### Android
+
+| Type | Icons | Font (ms) | SVG (ms) | Speedup |
+|---|---|---|---|---|
+| Monochrome | 100 | 79.47 | 141.85 | **1.8x** |
+| Monochrome | 500 | 366.37 | 611.42 | **1.7x** |
+| Monochrome | 1000 | 744.84 | 1,136.28 | **1.5x** |
+| Color | 100 | 87.86 | 300.72 | **3.4x** |
+| Color | 500 | 347.25 | 1,439.93 | **4.1x** |
+| Color | 1000 | 708.55 | 2,733.14 | **3.9x** |
+
+> **Summary:** The difference is most noticeable with **color icons** (up to **5.8x** on iOS, **4.1x** on Android). For monochrome icons the gap is smaller (**1.5x–2.3x**). For most apps with a moderate number of icons, `react-native-svg` works perfectly fine.
 
 ---
 
@@ -423,7 +400,26 @@ import type {
 - **Color fonts** are experimental but work on both iOS and Android.
 - For best results, SVG icons should be **solid / filled** (no strokes).
 - In the example app, this approach successfully transforms roughly **~95%** of icons. Failures usually come from stroke usage, unsupported SVG features, or complex path structures.
-- Rendering is typically **significantly faster** than `react-native-svg`, even when transformation is not perfect.
+- For most use cases, [`react-native-svg`](https://github.com/software-mansion/react-native-svg) is a great choice and we recommend it. The font approach shows a noticeable improvement mainly with **color icons**; for monochrome icons the difference is small.
+
+---
+
+## Roadmap / TODO
+
+- [ ] **Better solid icon sets** — find and bundle higher-quality solid/filled icon packs for the example app (current sets are for demonstration only).
+- [ ] **Improved fallback mechanism** — a smarter runtime fallback that can help with color and stroke icons when font rendering fails (e.g. automatic SVG fallback per icon).
+- [ ] **Better sanitization pipeline** — replace or supplement Inkscape with a lighter, more reliable stroke-to-path engine for the `--sanitize` flow.
+
+Contributions are welcome! Feel free to [open a pull request](../../pulls) if you'd like to help with any of the above (or anything else).
+
+---
+
+## Credits
+
+The example app uses the following icon packs **for demonstration purposes only** (not intended for commercial use):
+
+- [SVG Owl — Halloween Scary Vectors](https://svgowl.com/packs/halloween-scary-vectors)
+- [SVG Owl — Winter Town Filled Vectors](https://svgowl.com/packs/winter-town-filled-vectors)
 
 ---
 
